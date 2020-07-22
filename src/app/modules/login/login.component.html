@@ -7,10 +7,10 @@
     <div>
       <h1 class="text-center">Log In To Your Account</h1>
       <form [formGroup]="loginForm" novalidate class="mt-5">
-        <div class="form-group has-float-label field-with-icon">
+        <div class="form-group has-float-label">
           <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
           <label for="username">User Name</label>
-          <i class="fal fa-check-circle text-success"></i>
+
           <div
             *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
             class="error-msg">
