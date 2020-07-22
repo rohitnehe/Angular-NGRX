@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import './assets/scss/variable';
+@import './assets/scss/form';
+@import './assets/scss/buttons';
+@import './assets/scss/custom';
+@import './assets/scss/responsive'
+

@@ -1,0 +1,134 @@
+:root {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: auto;
+}
+
+body {
+  background-color: $body-bg;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.8;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+p {
+  margin: 0;
+  font-size: 1.6rem;
+}
+a {
+  font-size: 1.6rem;
+  color: $primary-color;
+  text-decoration: none;
+}
+.form-control,
+input,
+label {
+  font-size: 1.6rem;
+}
+
+label {
+  margin: 0;
+  line-height: 1.5;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    font-size: 1.6rem;
+  }
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+/*create account page css*/
+
+.create-account-form {
+  // width: 475px;
+  // margin: 0 auto;
+  form {
+    width: 375px;
+    margin: 0 auto;
+  }
+  .logo {
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .password-rules {
+    position: absolute;
+    top: -1.6rem;
+    right: -15rem;
+    li {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: $danger;
+      list-style-type: disc;
+    }
+  }
+
+  .account-created {
+    width: 475px;
+    margin: 0 auto;
+    .success-icon {
+      width: 8rem;
+      height: 8rem;
+      display: inline-flex;
+      border-radius: 50%;
+      background-color: $success;
+      color: $white;
+      margin: 0 auto;
+      margin-top: 7rem;
+      align-items: center;
+      justify-content: center;
+      i {
+        font-size: 3rem;
+      }
+    }
+    .btn {
+      margin: 0 1rem;
+    }
+  }
+  &.login-form {
+    h1 {
+      margin-top: 10rem;
+      margin-bottom: 6rem;
+    }
+
+  }
+}

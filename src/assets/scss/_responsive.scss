@@ -1,0 +1,46 @@
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+
+
+//*CREATE ACCOUNT PAGE RESPONSIVE START HERE*//
+
+    .create-account-form {
+      form {
+        width: 100%;
+      }
+      .logo {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+      .password-rules {
+        display: none;
+        position: relative;
+        left: 1.5rem;
+        top: 1rem;
+      }
+      .account-created  {
+        width: 100%;
+        .btn {
+          margin: 0 0.5rem;
+        }
+        .success-icon {
+          margin-top: 3rem;
+        }
+      }
+    }
+
+//*CREATE ACCOUNT PAGE RESPONSIVE END HERE*//
+
+//*BUTTONS RESPONSIVE START HERE*//
+
+.btn {
+  min-width: 150px;
+}
+
+////////*BUTTONS RESPONSIVE END HERE*/////////
+
+}
