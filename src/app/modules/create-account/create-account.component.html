@@ -1,123 +1,134 @@
-<div class="container">
-  <div class="create-account-form">
-    <div class="logo">
-      <img src="../../../assets/img/logo.jpg" alt="logo">
-    </div>
-    <!--ACCOUNT CREATED FORM-->
-    <div>
-      <h1 class="text-center mb-3">Create New Account</h1>
-      <p class="text-center pb-4 mb-5">Already have an account? <a href="javascript:void(0)" [routerLink]="['/login']">Sign In</a></p>
-      <form [formGroup]="registerForm" novalidate>
-        <div class="form-group has-float-label field-with-icon">
-          <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
-          <label for="username">User Name</label>
-          <i class="icon-check text-success user-valid"></i>
-          <div
-            *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
-            class="error-msg">
-            <span *ngIf="registerForm.controls['username'].errors.required">
-              User name is required.
-            </span>
-          </div>
+<div class="logo">
+  <img src="../../../assets/img/logo.jpg" alt="logo">
+</div>
+<div class="create-account-form">
+  <!--ACCOUNT CREATED FORM-->
+  <div>
+    <h1 class="text-center mb-3">Create New Account</h1>
+    <p class="text-center pb-4 mb-5">Already have an account? <a href="javascript:void(0)"
+        [routerLink]="['/login']">Sign In</a></p>
+    <form [formGroup]="registerForm" novalidate>
+      <div class="form-group has-float-label field-with-icon">
+        <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
+        <label for="username">User Name</label>
+        <i class="icon-check text-success user-valid"></i>
+        <div
+          *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
+          class="error-msg">
+          <span *ngIf="registerForm.controls['username'].errors.required">
+            User name is required.
+          </span>
         </div>
-        <div class="form-group has-float-label field-with-icon position-relative">
-          <input class="form-control" type="password" id="password" placeholder="Password" formControlName="password">
-          <label for="password">Password</label>
-          <i class="icon-eye"></i>
-          <div
-            *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
-            class="error-msg">
-            <span *ngIf="registerForm.controls['password'].errors.required">
-              Password is required.
-            </span>
-          </div>
-          <!--PASSWORD RULES-->
-          <ul class="password-rules">
-            <li>8 Characters Long</li>
-            <li>Contain one Capital</li>
-            <li>Contain one Numeral</li>
-          </ul>
-          <!--PASSWORD RULES END-->
-        </div>
-        <div class="form-group has-float-label field-with-icon">
-          <input class="form-control" type="password" id="confirmPassword" placeholder="Confirm Password"
-            formControlName="confirmPassword">
-          <label for="confirmPassword">Confirm Password</label>
-          <i class="icon-eye"></i>
-          <div
-            *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)"
-            class="error-msg">
-            <span *ngIf="registerForm.controls['confirmPassword'].errors.required">
-              Confirm password is required.
-            </span>
-          </div>
-        </div>
-        <div class="d-flex mb-5">
-          <button class="btn btn-lg btn-primary w-100">CREATE ACCOUNT</button>
-        </div>
-      </form>
-
-      <p class="text-center pb-4 mb-5">By signing up, you agree to our
-        <a href="javascript:void(0)" (click)="openTermsOfServicesModal()">Terms of Services</a> and
-        <a href="javascript:void(0)" (click)="openPrivacyPolicyModal()">Privacy Policy.</a></p>
-    </div>
-    <!--ACCOUNT CREATED FORM END-->
-
-    <!--ACCOUNT CREATED SUCCCESS MESSAGE-->
-    <div class="account-created text-center d-none">
-      <div class="success-icon mb-4"><i class="far fa-check"></i></div>
-      <h1 class="text-center mb-4 mt-4">Account Created!</h1>
-      <p class="text-center pb-4 mb-5 mt-2">
-        You have taken the first step to something great!!
-        You can either keep going and set up your profile now, or log out and come back to it later.
-      </p>
-      <div class="mb-5">
-        <button class="btn btn-outline btn-outline-primary">LOGOUT</button>
-        <button class="btn btn-primary">SET UP PROFILE</button>
       </div>
-    </div>
-    <!--ACCOUNT CREATED SUCCCESS MESSAGE END-->
+      <div class="form-group has-float-label field-with-icon position-relative">
+        <input class="form-control" type="password" id="password" placeholder="Password" formControlName="password">
+        <label for="password">Password</label>
+        <i class="icon-eye"></i>
+        <div
+          *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+          class="error-msg">
+          <span *ngIf="registerForm.controls['password'].errors.required">
+            Password is required.
+          </span>
+        </div>
+        <!--PASSWORD RULES-->
+        <ul class="password-rules">
+          <li>8 Characters Long</li>
+          <li>Contain one Capital</li>
+          <li>Contain one Numeral</li>
+        </ul>
+        <!--PASSWORD RULES END-->
+      </div>
+      <div class="form-group has-float-label field-with-icon">
+        <input class="form-control" type="password" id="confirmPassword" placeholder="Confirm Password"
+          formControlName="confirmPassword">
+        <label for="confirmPassword">Confirm Password</label>
+        <i class="icon-eye"></i>
+        <div
+          *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)"
+          class="error-msg">
+          <span *ngIf="registerForm.controls['confirmPassword'].errors.required">
+            Confirm password is required.
+          </span>
+        </div>
+      </div>
+      <div class="d-flex mb-5">
+        <button class="btn btn-lg btn-primary w-100">CREATE ACCOUNT</button>
+      </div>
+    </form>
+
+    <p class="text-center">By signing up, you agree to our
+      <a href="javascript:void(0)" (click)="openTermsOfServicesModal()">Terms of Services</a> and
+      <a href="javascript:void(0)" (click)="openPrivacyPolicyModal()">Privacy Policy.</a></p>
   </div>
+  <!--ACCOUNT CREATED FORM END-->
+
+  <!--ACCOUNT CREATED SUCCCESS MESSAGE-->
+  <div class="account-created text-center d-none">
+    <div class="success-icon mb-4"><i class="icon-check"></i></div>
+    <h1 class="text-center mb-4 mt-4">Account Created!</h1>
+    <p class="text-center pb-4 mb-5 mt-2">
+      You have taken the first step to something great!!
+      You can either keep going and set up your profile now, or log out and come back to it later.
+    </p>
+    <div class="mb-5">
+      <button class="btn btn-outline btn-outline-primary">LOGOUT</button>
+      <button class="btn btn-primary">SET UP PROFILE</button>
+    </div>
+  </div>
+  <!--ACCOUNT CREATED SUCCCESS MESSAGE END-->
+</div>
 
 <!-- TERMS-OF-SERVICES-MODAL-WINDOW -->
-  <div *ngIf="termsOfServicesModal" class="custom-modal-overlay">
-    <div class="custom-modal">
-      <div class="custom-modal-header">
+<div *ngIf="termsOfServicesModal" class="custom-modal-overlay">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
       <h3>Terms of Services</h3>
       <a class="close" href="#" (click)="closeTermsOfServicesModal()">×</a>
     </div>
-      <div class="custom-modal-content">
-        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div>
-      <div class="custom-modal-footer">
-        <button type="button" class="btn btn-outline btn-outline-secondary" (click)="closeTermsOfServicesModal()">Close</button>
-        <button type="button" class="btn btn-primary ml-3">Accept</button>
-      </div>
+    <div class="custom-modal-content">
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
+        rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur
+        et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    </div>
+    <div class="custom-modal-footer">
+      <button type="button" class="btn btn-outline btn-outline-secondary"
+        (click)="closeTermsOfServicesModal()">Close</button>
+      <button type="button" class="btn btn-primary ml-3">Accept</button>
     </div>
   </div>
-  <!-- TERMS-OF-SERVICES-MODAL-WINDOW END -->
+</div>
+<!-- TERMS-OF-SERVICES-MODAL-WINDOW END -->
 
 
-  <!-- PRIVACY-POLICY-MODAL-WINDOW -->
-  <div *ngIf="privacyPolicy" class="custom-modal-overlay">
-    <div class="custom-modal">
-      <div class="custom-modal-header">
+<!-- PRIVACY-POLICY-MODAL-WINDOW -->
+<div *ngIf="privacyPolicy" class="custom-modal-overlay">
+  <div class="custom-modal">
+    <div class="custom-modal-header">
       <h3>Privacy Policy</h3>
       <a class="close" href="#" (click)="closePrivacyPolicyModal()">×</a>
     </div>
-      <div class="custom-modal-content">
-        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div>
-      <div class="custom-modal-footer">
-        <button type="button" class="btn btn-outline btn-outline-secondary" (click)="closePrivacyPolicyModal()">Close</button>
-        <button type="button" class="btn btn-primary ml-3">Accept</button>
-      </div>
+    <div class="custom-modal-content">
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
+        rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur
+        et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    </div>
+    <div class="custom-modal-footer">
+      <button type="button" class="btn btn-outline btn-outline-secondary"
+        (click)="closePrivacyPolicyModal()">Close</button>
+      <button type="button" class="btn btn-primary ml-3">Accept</button>
     </div>
   </div>
-  <!-- PRIVACY-POLICY-MODAL-WINDO-END-->
+</div>
+
+<!-- PRIVACY-POLICY-MODAL-WINDO-END-->
