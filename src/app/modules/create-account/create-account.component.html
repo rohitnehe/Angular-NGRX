@@ -11,7 +11,7 @@
         <div class="form-group has-float-label field-with-icon">
           <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
           <label for="username">User Name</label>
-          <i class="fal fa-check-circle text-success"></i>
+          <i class="icon-check-circle text-success"></i>
           <div
             *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
             class="error-msg">
@@ -23,7 +23,7 @@
         <div class="form-group has-float-label field-with-icon position-relative">
           <input class="form-control" type="password" id="password" placeholder="Password" formControlName="password">
           <label for="password">Password</label>
-          <i class="fas fa-eye"></i>
+          <i class="icon-eye"></i>
           <div
             *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
             class="error-msg">
@@ -43,7 +43,7 @@
           <input class="form-control" type="password" id="confirmPassword" placeholder="Confirm Password"
             formControlName="confirmPassword">
           <label for="confirmPassword">Confirm Password</label>
-          <i class="fas fa-eye"></i>
+          <i class="icon-eye"></i>
           <div
             *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)"
             class="error-msg">

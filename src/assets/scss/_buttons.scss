@@ -70,8 +70,8 @@
       border: transparent;
     }
     input[type="checkbox"]:checked + label::after {
-      font-family: "FontAwesome";
-      content: "\f00c";
+      font-family: "icomoon";
+      content: "\e901";
     }
   }
 }
