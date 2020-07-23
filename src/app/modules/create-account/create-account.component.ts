@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-create-account',
@@ -13,7 +14,10 @@ export class CreateAccountComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(
@@ -23,6 +27,7 @@ export class CreateAccountComponent implements OnInit {
         confirmPassword: ['', Validators.required],
       }
     );
+    this.crateAccount();
   }
 
 
@@ -44,5 +49,14 @@ export class CreateAccountComponent implements OnInit {
   closePrivacyPolicyModal() {
       this.privacyPolicy = false;
     }
+
+    // create account
+    crateAccount() {
+        const userData = Object.assign({ email: 'test2@gmail.com', password: 'rohan'});
+        this.userService.createUser(userData).subscribe(response => {
+          console.log(response);
+        }, (error) => '');
+      }
+    
 
 }

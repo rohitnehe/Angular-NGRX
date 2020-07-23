@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private apiService: ApiService) { }
 
-  CreateUser(userdata: object) {
+  createUser(userdata: object) {
     return this.apiService.Request(environment.userServiceUrl, HttpReqMethod.POST.toString(), userdata);
   }
 
