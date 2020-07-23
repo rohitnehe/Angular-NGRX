@@ -8,6 +8,9 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 })
 export class CreateAccountComponent implements OnInit {
 
+  termsOfServicesModal: boolean;
+  privacyPolicy: boolean;
+
   registerForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -21,5 +24,25 @@ export class CreateAccountComponent implements OnInit {
       }
     );
   }
+
+
+// on click open & close function for terms of services modal window
+  openTermsOfServicesModal() {
+  this.termsOfServicesModal = true;
+  }
+
+  closeTermsOfServicesModal() {
+    this.termsOfServicesModal = false;
+  }
+
+
+ // on click open & close function for privacy policy modal window
+  openPrivacyPolicyModal() {
+    this.privacyPolicy = true;
+    }
+
+  closePrivacyPolicyModal() {
+      this.privacyPolicy = false;
+    }
 
 }
