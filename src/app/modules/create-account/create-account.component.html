@@ -11,7 +11,7 @@
         <div class="form-group has-float-label field-with-icon">
           <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
           <label for="username">User Name</label>
-          <i class="icon-check-circle text-success"></i>
+          <i class="icon-check text-success user-valid"></i>
           <div
             *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
             class="error-msg">

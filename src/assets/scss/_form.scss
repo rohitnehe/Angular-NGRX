@@ -104,6 +104,12 @@ select:disabled {
       font-size: 1.8rem;
       color: $gray-color;
     }
+    .user-valid {
+      font-size: 1.3rem;
+    border: 1px solid $success;
+    border-radius: 50%;
+    padding: 2px;
+    }
 
     .form-control {
       padding-right: 1.675rem;
