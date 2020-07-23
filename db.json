@@ -25,5 +25,8 @@
       "password": "$2a$10$hHK5RJsJf72RZ.6WyA4T3ezpA2TKMc2fweICl/i3srB8TMsNOq9vW",
       "id": 5
     }
+  ],
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
   ]
 }
