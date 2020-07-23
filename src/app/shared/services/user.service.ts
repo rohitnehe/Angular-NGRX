@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpReqMethod, ApiService } from '../services/api.service';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

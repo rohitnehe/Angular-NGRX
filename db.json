@@ -29,6 +29,11 @@
       "email": "test2@gmail.com",
       "password": "$2a$10$jyvz4d.dkswH4gKhqcmoue54SioFcGU5IPVOtx2y83wbqL5XoqMAC",
       "id": 6
+    },
+    {
+      "email": "test3@gmail.com",
+      "password": "$2a$10$i0851BZYntQoKdKWuPKKNe/i0Qd2X5GU5EFfHYB6gXho7waZtNF06",
+      "id": 7
     }
   ],
   "posts": [
