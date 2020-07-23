@@ -19,6 +19,28 @@
       "email": "pranay@test.com",
       "password": "$2a$10$eukFbnOXnE/SWXyp9yBFBuDd1nAzXelrtD.CXmdex7fXMOiQMjXGK",
       "id": 4
+    },
+    {
+      "email": "rohan@mail.com",
+      "password": "$2a$10$hHK5RJsJf72RZ.6WyA4T3ezpA2TKMc2fweICl/i3srB8TMsNOq9vW",
+      "id": 5
+    },
+    {
+      "email": "test2@gmail.com",
+      "password": "$2a$10$jyvz4d.dkswH4gKhqcmoue54SioFcGU5IPVOtx2y83wbqL5XoqMAC",
+      "id": 6
+    },
+    {
+      "email": "test4@gmail.com",
+      "password": "rohan",
+      "id": 7
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     }
   ]
 }
