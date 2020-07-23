@@ -100,9 +100,15 @@ select:disabled {
     i {
       position: absolute;
       right: 0;
-      top: 0.55rem;
-      font-size: 1.6rem;
+      top: 0.30rem;
+      font-size: 1.8rem;
       color: $gray-color;
+    }
+    .user-valid {
+      font-size: 1.3rem;
+    border: 1px solid $success;
+    border-radius: 50%;
+    padding: 2px;
     }
 
     .form-control {
