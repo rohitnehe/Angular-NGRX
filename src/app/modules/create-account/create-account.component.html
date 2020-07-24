@@ -1,7 +1,6 @@
-
 <!--server message-->
 <div *ngIf="isAlert" class="mb-0 mt-3">
-  <div class="alert alert-danger" role="alert" *ngIf="isAlert" >{{ message }}
+  <div class="alert alert-{{type}}" role="alert" *ngIf="isAlert">{{ message }}
     <button type="button" class="close" (click)="isAlert = null" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -17,16 +16,19 @@
     <h1 class="text-center mb-3">Create New Account</h1>
     <p class="text-center pb-4 mb-5">Already have an account? <a href="javascript:void(0)"
         [routerLink]="['/login']">Sign In</a></p>
-    <form [formGroup]="registerForm" novalidate>
+    <form [formGroup]="registerForm" novalidate (ngSubmit)="submit()">
       <div class="form-group has-float-label field-with-icon">
-        <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
-        <label for="username">User Name</label>
-        <i *ngIf="registerForm.controls['username'].valid" class="icon-check text-success user-valid"></i>
+        <input class="form-control" type="text" id="email" placeholder="Email" formControlName="email">
+        <label for="email">Email</label>
+        <i *ngIf="registerForm.controls['email'].valid" class="icon-check text-success user-valid"></i>
         <div
-          *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
+          *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
           class="error-msg">
-          <span *ngIf="registerForm.controls['username'].errors.required">
-            {{validationMessage['name-required']}}
+          <span *ngIf="registerForm.controls['email'].errors.required">
+            {{validationMessage['email-required']}}
+          </span>
+          <span *ngIf="registerForm.controls['email'].errors?.pattern">
+            {{validationMessage['email-pattern']}}
           </span>
         </div>
       </div>
@@ -68,7 +70,7 @@
         </div>
       </div>
       <div class="d-flex mb-5">
-        <button class="btn btn-lg btn-primary w-100">CREATE ACCOUNT</button>
+        <button type="submit" class="btn btn-lg btn-primary w-100">CREATE ACCOUNT</button>
       </div>
     </form>
 

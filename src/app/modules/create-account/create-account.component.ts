@@ -3,6 +3,10 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from '../../shared/services/static.data.service';
+import { Store } from '@ngrx/store';
+import { User } from '../../shared/store/models/user';
+import { AddUserAction } from '../../shared/store/actions/user.actions';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-create-account',
@@ -27,16 +31,19 @@ export class CreateAccountComponent implements OnInit {
   validationMessage: object;
   hidePassword: boolean;
   hideConfirmPassword: boolean;
+  user: any;
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private staticDataService: StaticDataService,
-    private router: Router
+    private router: Router,
+    private store: Store<User>
   ) { }
 
   ngOnInit(): void {
     this.createForm();
+    console.log(this.store);
   }
 
   // create account form
@@ -45,7 +52,7 @@ export class CreateAccountComponent implements OnInit {
     this.hideConfirmPassword = true;
     this.registerForm = this.fb.group(
       {
-        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
         password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@$!%*#?&]+$')]],
         confirmPassword: ['', Validators.required],
       }, { validator: this.comparePassword }
@@ -64,19 +71,42 @@ export class CreateAccountComponent implements OnInit {
     }
   }
 
-  // create account
+  // get validation messages
   getValidationMessage() {
     this.userService.validationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error) });
   }
 
+  // create account form submit
+  submit() {
+    if (this.registerForm.status === 'VALID') {
+      const email = this.registerForm.value.email;
+      const password = this.registerForm.value.password;
+      this.user = Object.assign({id: uuidv4() ,email: email, password: password });
+      try {
+        this.userService.createAccount(this.user).subscribe(data => {
+          if (data.accessToken) {
+            //this.router.navigate(['/user-management']);
+            this.store.dispatch(new AddUserAction(this.user));
+          }
+        },
+          error => this.errorCallback(error));
+      } catch (error) { console.log(error) }
+    } else {
+      this.markControlsAsTouched(this.registerForm);
+    }
 
-  // create account
-  crateAccount() {
-    const userData = Object.assign({ email: 'test4@gmail.com', password: 'rohan' });
-    this.userService.createAccount(userData).subscribe(response => {
-    }, (error) => { this.errorCallback(error) });
+  }
+
+  // Mark controls of form as touched.
+  markControlsAsTouched(formRef: FormGroup) {
+    for (const property in formRef.controls) {
+      if (property) {
+        formRef.controls[property].markAsTouched();
+      }
+    }
+    window.scroll(0, 0);
   }
 
   // display server errors

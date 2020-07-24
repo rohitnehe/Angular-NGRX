@@ -39,6 +39,26 @@
       "email": "test4@gmail.com",
       "password": "$2a$10$aj2TzfLPj6hAzgakGip9buPHPcvLR6kPOZF29h2mZHtX83yDVzBPy",
       "id": 8
+    },
+    {
+      "email": "nitin@gmail.com",
+      "password": "$2a$10$VJphKF.s.GVscNXjihWAIeBOrxpzJxXlQy/aj70tO5F/EzZaM1XzW",
+      "id": 9
+    },
+    {
+      "email": "sam@gmail.com",
+      "password": "$2a$10$JxMK5R7bJ1zkWgDNpULWsu2jKp/PrvS..eux.TeFmLYIaA5P.woBG",
+      "id": "43fc4e7b-0843-401f-91af-b9df39661c2c"
+    },
+    {
+      "email": "ganeshudmale@benchmarkit.solutions",
+      "password": "$2a$10$Wh5zQf4AXIm8R21QrIgDY.4sI1C.s0mjmzMP/ENQefVPcSO5BBfCK",
+      "id": "cf9aec9e-afb9-48ea-85f3-e843d72966e4"
+    },
+    {
+      "email": "bits@benchmarkit.solutions",
+      "password": "$2a$10$visdmGVCuXLOQW7Om4ZqN.NVrIwnPuJd50hd5kbLDDrPyYul5BHAi",
+      "id": "24709acd-221b-4768-a223-db098b3b2687"
     }
   ],
   "validationMessage": [
@@ -46,7 +66,8 @@
       "id": 1,
       "key": "create-account",
       "messages": {
-        "name-required": "User name is required.",
+        "email-required": "Email is required.",
+        "email-pattern": "Please enter valid email address.",
         "password-required": "Password is required.",
         "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
         "confirm-password-required": "Confirm Password is required.",

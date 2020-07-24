@@ -12,6 +12,8 @@ import { TokenInterceptor } from '../app/shared/services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SharedModule} from '../app/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { UserReducer } from './shared/store/reducers/user.reducer';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
-  ],
-  
+    SharedModule,
+    HttpClientModule,
+    StoreModule.forRoot({
+      user: UserReducer
+    })
+  ]
+  ,
   providers: [
     AuthService,
     {
@@ -32,7 +38,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       useClass: TokenInterceptor,
       multi: true
     },
-  ],
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

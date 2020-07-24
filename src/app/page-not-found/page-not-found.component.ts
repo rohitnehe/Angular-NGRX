@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class PageNotFoundComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(){
