@@ -59,6 +59,41 @@
       "email": "bits@benchmarkit.solutions",
       "password": "$2a$10$visdmGVCuXLOQW7Om4ZqN.NVrIwnPuJd50hd5kbLDDrPyYul5BHAi",
       "id": "24709acd-221b-4768-a223-db098b3b2687"
+    },
+    {
+      "email": "rohanprabhune@benchmarkit.solutions",
+      "password": "$2a$10$8yedgW.2cu7rUcwzwwR.v.l3qY53wkVfj7ZkyIj/CbQvdIyA9Poey",
+      "id": "6f692b5b-5749-4869-960c-7bd8b6acf98d"
+    },
+    {
+      "email": "rohanprabhune1@benchmarkit.solutions",
+      "password": "$2a$10$Wtjnh5jMCLQ47seUXr5UD.s8/mrgRai22IyX4.Bni4QQgH2iQZKoq",
+      "id": "1b801577-76d9-4911-b1c9-6c220ac248c5"
+    },
+    {
+      "email": "rohanprabhune2@benchmarkit.solutions",
+      "password": "$2a$10$yVFzXga0fQE7sUPk0h3wy.3zCWNB5L40RtuR2SBoWNTn9fGIZLvpq",
+      "id": "43f7fc19-1b85-416b-81fa-cbc6528f6bba"
+    },
+    {
+      "email": "rohanprabhune5@benchmarkit.solutions",
+      "password": "$2a$10$St84smz4CUVIRJCmTLZK7.CYPfZnWyIEVXKJ1bgeEUK6xpX9gWxAW",
+      "id": "77667564-f16b-48af-a904-606221106e4a"
+    },
+    {
+      "email": "rohanprabhune8@benchmarkit.solutions",
+      "password": "$2a$10$pQZpWUMAU7me28FfU9eyPuyAuJ7EddC2gf0qppPuCyyOoSdSLmSKa",
+      "id": "4d9a4213-1de8-4001-af03-f8f7abd48b6b"
+    },
+    {
+      "email": "rohanprabhune12@benchmarkit.solutions",
+      "password": "$2a$10$kFIwtTsljnNnCY.AoTktJ.1vSr0.40QDaQo/ofmbSN/UQOAr4RBFq",
+      "id": "19e631bd-98fe-4f20-ae8f-82fb9f8d531e"
+    },
+    {
+      "email": "rohanprabhune20@benchmarkit.solutions",
+      "password": "$2a$10$lsR8E6hXknIWumHagEFtVetxl.p94fvw70C0NaHbgmhCVuLu6jjIe",
+      "id": "2bee79a9-559c-426f-98b8-12ec498376d4"
     }
   ],
   "validationMessage": [

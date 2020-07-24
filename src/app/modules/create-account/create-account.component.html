@@ -12,7 +12,7 @@
   <div class="logo">
     <img src="../../../assets/img/logo.jpg" alt="logo">
   </div>
-  <div>
+  <div *ngIf="!isUserCreated">
     <h1 class="text-center mb-3">Create New Account</h1>
     <p class="text-center pb-4 mb-5">Already have an account? <a href="javascript:void(0)"
         [routerLink]="['/login']">Sign In</a></p>
@@ -81,16 +81,14 @@
   <!--ACCOUNT CREATED FORM END-->
 
   <!--ACCOUNT CREATED SUCCCESS MESSAGE-->
-  <div class="account-created text-center d-none">
+  <div class="account-created text-center" *ngIf="isUserCreated">
     <div class="success-icon mb-4"><i class="icon-check"></i></div>
     <h1 class="text-center mb-4 mt-4">Account Created!</h1>
     <p class="text-center pb-4 mb-5 mt-2">
-      You have taken the first step to something great!!
-      You can either keep going and set up your profile now, or log out and come back to it later.
+        You have taken the first step to someting great! Now you can login with your username and passowrd.
     </p>
     <div class="mb-5">
-      <button class="btn btn-outline btn-outline-primary">LOGOUT</button>
-      <button class="btn btn-primary">SET UP PROFILE</button>
+      <button [routerLink]="['/login']" class="btn btn-outline btn-outline-primary">LOGIN</button>
     </div>
   </div>
   <!--ACCOUNT CREATED SUCCCESS MESSAGE END-->
