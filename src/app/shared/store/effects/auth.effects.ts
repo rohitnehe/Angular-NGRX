@@ -30,10 +30,8 @@ export class AuthEffects {
     (ofType(AuthActionTypes.LOGIN))
     .map((action: LogIn) => action.payload)
     .switchMap(payload => {
-      console.log('in3')
       return this.authService.logIn(payload.email, payload.password)
         .map((user) => {
-          console.log(user);
           return new LogInSuccess({token: user.accessToken, email: payload.email});
         })
         .catch((error) => {
@@ -46,11 +44,16 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      console.log(user);
-      console.log('in6')
       localStorage.setItem('token', user.payload.token);
       this.router.navigateByUrl('/');
     })
 );
- 
+
+  @Effect({ dispatch: false })
+  LogInFailure: Observable<any> = this.actions.pipe(
+    
+    ofType(AuthActionTypes.LOGIN_FAILURE),
+   
+
+  ); 
 }

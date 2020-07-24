@@ -11,13 +11,12 @@ export class LogIn implements Action {
   
   readonly type = AuthActionTypes.LOGIN;
   constructor(public payload: any) {
-    console.log('in2');
   }
 }
 
 export class LogInSuccess implements Action {
   readonly type = AuthActionTypes.LOGIN_SUCCESS;
-  constructor(public payload: any) { console.log('in5')}
+  constructor(public payload: any) { }
 }
 
 export class LogInFailure implements Action {

@@ -74,11 +74,6 @@
       "email": "rohanprabhune2@benchmarkit.solutions",
       "password": "$2a$10$yVFzXga0fQE7sUPk0h3wy.3zCWNB5L40RtuR2SBoWNTn9fGIZLvpq",
       "id": "43f7fc19-1b85-416b-81fa-cbc6528f6bba"
-    },
-    {
-      "email": "pranay.palaskar@benchmarkit.solutions",
-      "password": "$2a$10$Nj3rfV0caip2aUZvNtoRne8zRFcqS5FbzFHbfNYz9OAWnsf6i1iMa",
-      "id": "f5b136a7-4220-499b-9188-9f8880b86cbe"
     }
   ],
   "validationMessage": [
@@ -101,10 +96,9 @@
         "email-required": "Email is required.",
         "email-pattern": "Please enter valid email address.",
         "password-required": "Password is required.",
-        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
-       }
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters."
+      }
     }
-
   ],
   "staticContent": [
     {

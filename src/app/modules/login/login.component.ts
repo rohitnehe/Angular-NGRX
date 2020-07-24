@@ -3,11 +3,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { User } from '../../shared/store/models/user';
 
 import { Store } from '@ngrx/store';
-import { AppState, } from '../../shared/store/app.states';
+import { AppState,selectAuthState } from '../../shared/store/app.states';
 
 import { LogIn } from '../../shared/store/actions/auth.actions';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -18,36 +19,46 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
+  
   user: User = new User();
+  getState: Observable<any>;
   isAlert = false;
   type: string;
   message = '';
   hidePassword: boolean;
+  errorMessage: string | null;
+
   constructor(private fb: FormBuilder,
     private store: Store<AppState>,
     private userService: UserService,
     private router: Router,
-  ) { }
+  ) { 
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit(): void {
     this.createLoginForm();
-
+   
   }
   //create Login Form
   createLoginForm() {
     this.hidePassword = true;
     this.loginForm = this.fb.group(
       {
-        username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@$!%*#?&]+$')]],
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]],
       }
     );
     this.getValidationMessage();
+
+    this.getState.subscribe((state) => {
+      this.errorMessage = state.errorMessage;
+    });
   }
 
   //get validation messages
   getValidationMessage() {
-    this.userService.validationMessage().subscribe(response => {
+    this.userService.loginValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error) });
   }
@@ -81,7 +92,7 @@ export class LoginComponent implements OnInit {
       const payload = {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
-      };
+      };     
       this.store.dispatch(new LogIn(payload));
     }
     else {

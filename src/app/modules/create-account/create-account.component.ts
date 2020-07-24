@@ -32,6 +32,7 @@ export class CreateAccountComponent implements OnInit {
   hidePassword: boolean;
   hideConfirmPassword: boolean;
   user: any;
+  isUserCreated:boolean
 
   constructor(
     private fb: FormBuilder,
@@ -43,7 +44,6 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    console.log(this.store);
   }
 
   // create account form
@@ -87,8 +87,8 @@ export class CreateAccountComponent implements OnInit {
       try {
         this.userService.createAccount(this.user).subscribe(data => {
           if (data.accessToken) {
-            //this.router.navigate(['/user-management']);
             this.store.dispatch(new AddUserAction(this.user));
+            this.isUserCreated = true;
           }
         },
           error => this.errorCallback(error));
@@ -111,13 +111,14 @@ export class CreateAccountComponent implements OnInit {
 
   // display server errors
   errorCallback(error: any) {
+    console.log(error);
     window.scroll(0, 0);
     if (error.error.status === 403 || error.status === 404) {
       this.router.navigate(['/page-not-found']);
     } else {
       this.isAlert = true;
       this.type = 'danger';
-      this.message = error.message ? error.message : this.message;
+      this.message = error.error ? error.error : (error.message ? error.message : this.message);
     }
   }
 

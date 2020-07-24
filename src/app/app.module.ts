@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +13,7 @@ import {SharedModule} from '../app/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StoreModule } from '@ngrx/store';
 import { UserReducer } from './shared/store/reducers/user.reducer';
+//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
