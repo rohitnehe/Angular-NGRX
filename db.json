@@ -94,6 +94,11 @@
       "email": "rohanprabhune20@benchmarkit.solutions",
       "password": "$2a$10$lsR8E6hXknIWumHagEFtVetxl.p94fvw70C0NaHbgmhCVuLu6jjIe",
       "id": "2bee79a9-559c-426f-98b8-12ec498376d4"
+    },
+    {
+      "email": "suraj@benchmarkit.solutions",
+      "password": "$2a$10$yMwCA0TIOpnAPqUA4fSE.OiM33XKJuIBnpsi8bdB4/ymf.SyS9kTu",
+      "id": "fb1750ab-cd28-47ef-bb16-0d5b61f34aef"
     }
   ],
   "validationMessage": [
