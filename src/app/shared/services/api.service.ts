@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-
 
 export enum HttpReqMethod {
   POST,
@@ -33,6 +31,5 @@ export class ApiService {
       console.log('Error In api.service.ts at Method: Request. ' + error);
     }
   }
- 
 }
 

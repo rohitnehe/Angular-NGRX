@@ -1,6 +1,5 @@
-import { User } from "../models/user";
-import { UserAction, UserActionTypes } from "../actions/user.actions";
-import { cornsilk } from "color-name";
+import { User } from '../models/user';
+import { UserAction, UserActionTypes } from '../actions/user.actions';
 
 
 export function UserReducer(state: Array<User> = [], action: UserAction) {

@@ -1,5 +1,5 @@
-import { Action } from "@ngrx/store";
-import { User } from "../models/user";
+import { Action } from '@ngrx/store';
+import { User } from '../models/user';
 
 
 export enum UserActionTypes{
@@ -13,3 +13,4 @@ export class AddUserAction implements Action{
 }
 
 export type UserAction = AddUserAction;
+

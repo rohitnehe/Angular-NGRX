@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from '../../shared/services/static.data.service';
 import { Store } from '@ngrx/store';
 import { User } from '../../shared/store/models/user';
 import { AddUserAction } from '../../shared/store/actions/user.actions';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-create-account',
@@ -32,7 +31,7 @@ export class CreateAccountComponent implements OnInit {
   hidePassword: boolean;
   hideConfirmPassword: boolean;
   user: any;
-  isUserCreated:boolean
+  isUserCreated: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -75,7 +74,7 @@ export class CreateAccountComponent implements OnInit {
   getValidationMessage() {
     this.userService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   // create account form submit
@@ -83,7 +82,7 @@ export class CreateAccountComponent implements OnInit {
     if (this.registerForm.status === 'VALID') {
       const email = this.registerForm.value.email;
       const password = this.registerForm.value.password;
-      this.user = Object.assign({id: uuidv4() ,email: email, password: password });
+      this.user = Object.assign({email, password});
       try {
         this.userService.createAccount(this.user).subscribe(data => {
           if (data.accessToken) {
@@ -92,7 +91,7 @@ export class CreateAccountComponent implements OnInit {
           }
         },
           error => this.errorCallback(error));
-      } catch (error) { console.log(error) }
+      } catch (error) { console.log(error); }
     } else {
       this.markControlsAsTouched(this.registerForm);
     }
@@ -111,7 +110,6 @@ export class CreateAccountComponent implements OnInit {
 
   // display server errors
   errorCallback(error: any) {
-    console.log(error);
     window.scroll(0, 0);
     if (error.error.status === 403 || error.status === 404) {
       this.router.navigate(['/page-not-found']);
@@ -128,13 +126,12 @@ export class CreateAccountComponent implements OnInit {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   closeTermsOfServicesModal() {
     this.termsOfServicesModal = false;
   }
-
 
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
@@ -142,12 +139,11 @@ export class CreateAccountComponent implements OnInit {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   closePrivacyPolicyModal() {
     this.privacyPolicyModal = false;
   }
-
 
 }
