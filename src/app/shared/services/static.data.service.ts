@@ -11,9 +11,14 @@ export class StaticDataService {
 
   constructor(private apiService: ApiService) { }
 
-  // validation messages for create user
+  // validation terms of service
   getServiceTerms() {
-    return this.apiService.Request(environment.serviceUrl + 'staticContent?title=terms-of-service', HttpReqMethod.GET.toString());
+    return this.apiService.Request(environment.serviceUrl + 'staticContent?key=terms-of-service', HttpReqMethod.GET.toString());
+  }
+
+  // validation terms of service
+  getPrivacyPolicy() {
+    return this.apiService.Request(environment.serviceUrl + 'staticContent?key=privacy-policy', HttpReqMethod.GET.toString());
   }
 
 }

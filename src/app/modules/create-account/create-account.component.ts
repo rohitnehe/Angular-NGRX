@@ -13,16 +13,18 @@ export class CreateAccountComponent implements OnInit {
 
   termsOfServicesModal: boolean;
   privacyPolicyModal: boolean;
+  termsOfServicesTitle: string;
+  privacyPolicyTitle: string;
   termsOfServices: string;
   privacyPolicy: string;
- 
+
   // alert message
   message = '';
   isAlert = false;
   type: string;
 
   registerForm: FormGroup;
-  validationMessage:object;
+  validationMessage: object;
   hidePassword: boolean;
   hideConfirmPassword: boolean;
 
@@ -74,7 +76,7 @@ export class CreateAccountComponent implements OnInit {
   crateAccount() {
     const userData = Object.assign({ email: 'test4@gmail.com', password: 'rohan' });
     this.userService.createAccount(userData).subscribe(response => {
-    }, (error) => {this.errorCallback(error)});
+    }, (error) => { this.errorCallback(error) });
   }
 
   // display server errors
@@ -91,9 +93,11 @@ export class CreateAccountComponent implements OnInit {
 
   // on click open & close function for terms of services modal window
   openTermsOfServicesModal() {
-  //   this.staticDataService.getServiceTerms().subscribe(response => {
-  //  }, (error) => {this.errorCallback(error)});
-   this.termsOfServicesModal = true;
+    this.staticDataService.getServiceTerms().subscribe(response => {
+      this.termsOfServicesTitle = response[0].title;
+      this.termsOfServices = response[0].content;
+      this.termsOfServicesModal = true;
+    }, (error) => { this.errorCallback(error) });
   }
 
   closeTermsOfServicesModal() {
@@ -103,7 +107,11 @@ export class CreateAccountComponent implements OnInit {
 
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
-    this.privacyPolicyModal = true;
+    this.staticDataService.getPrivacyPolicy().subscribe(response => {
+      this.privacyPolicyTitle = response[0].title;
+      this.privacyPolicy = response[0].content;
+      this.privacyPolicyModal = true;
+    }, (error) => { this.errorCallback(error) });
   }
 
   closePrivacyPolicyModal() {

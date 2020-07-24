@@ -3,11 +3,11 @@
 </div>
 <!--server message-->
 <div *ngIf="isAlert" class="mb-4">
-    <div class="alert alert-danger" role="alert" *ngIf="isAlert" [type]="type">{{ message }}
-        <button type="button" class="close"  (click)="isAlert = null" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+  <div class="alert alert-danger" role="alert" *ngIf="isAlert" [type]="type">{{ message }}
+    <button type="button" class="close" (click)="isAlert = null" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </div>
 <!--server message-->
 <div class="form-wrapper">
@@ -25,42 +25,46 @@
           *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)"
           class="error-msg">
           <span *ngIf="registerForm.controls['username'].errors.required">
-              {{validationMessage['name-required']}}
+            {{validationMessage['name-required']}}
           </span>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon position-relative">
-        <input class="form-control" [type]="hidePassword ? 'password' : 'text'" id="password" placeholder="Password" formControlName="password">
+        <input class="form-control" [type]="hidePassword ? 'password' : 'text'" id="password" placeholder="Password"
+          formControlName="password">
         <label for="password">Password</label>
-        <i (click)="hidePassword = !hidePassword" class="pointer" [ngClass]="hidePassword ? 'icon-eye-off' : 'icon-eye'"></i>
+        <i (click)="hidePassword = !hidePassword" class="pointer"
+          [ngClass]="hidePassword ? 'icon-eye-off' : 'icon-eye'"></i>
         <div
           *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
           class="error-msg">
           <span *ngIf="registerForm.controls['password'].errors.required">
-              {{validationMessage['password-required']}}
+            {{validationMessage['password-required']}}
           </span>
         </div>
         <div
           *ngIf="registerForm.controls['password'].errors?.minlength || registerForm.controls['password'].errors?.pattern"
           class="error-msg">
-           {{validationMessage['password-pattern']}}
+          {{validationMessage['password-pattern']}}
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon">
-        <input class="form-control" [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword" placeholder="Confirm Password"
-          formControlName="confirmPassword" [ngClass]="{'passwordNotSame': registerForm.hasError('passwordNotSame')}">
+        <input class="form-control" [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword"
+          placeholder="Confirm Password" formControlName="confirmPassword"
+          [ngClass]="{'passwordNotSame': registerForm.hasError('passwordNotSame')}">
         <label for="confirmPassword">Confirm Password</label>
-        <i (click)="hideConfirmPassword = !hideConfirmPassword" class="pointer" [ngClass]="hideConfirmPassword ? 'icon-eye-off' : 'icon-eye'"></i>
+        <i (click)="hideConfirmPassword = !hideConfirmPassword" class="pointer"
+          [ngClass]="hideConfirmPassword ? 'icon-eye-off' : 'icon-eye'"></i>
         <div
           *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)"
           class="error-msg">
           <span *ngIf="registerForm.controls['confirmPassword'].errors.required">
-              {{validationMessage['confirm-password-required']}}
+            {{validationMessage['confirm-password-required']}}
           </span>
         </div>
         <div class="error-msg" *ngIf="registerForm.hasError('passwordNotSame')">
-            {{validationMessage['password-mismatch']}}
-      </div>
+          {{validationMessage['password-mismatch']}}
+        </div>
       </div>
       <div class="d-flex mb-5">
         <button class="btn btn-lg btn-primary w-100">CREATE ACCOUNT</button>
@@ -93,18 +97,10 @@
 <div *ngIf="termsOfServicesModal" class="custom-modal-overlay">
   <div class="custom-modal">
     <div class="custom-modal-header">
-      <h3>Terms of Services</h3>
+      <h3>{{termsOfServicesTitle}}</h3>
       <a class="close" href="#" (click)="closeTermsOfServicesModal()">×</a>
     </div>
-    <div class="custom-modal-content">
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
-        rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur
-        et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <div class="custom-modal-content" [innerHtml]="termsOfServices">
     </div>
     <div class="custom-modal-footer">
       <button type="button" class="btn btn-outline btn-outline-secondary"
@@ -119,18 +115,10 @@
 <div *ngIf="privacyPolicyModal" class="custom-modal-overlay">
   <div class="custom-modal">
     <div class="custom-modal-header">
-      <h3>Privacy Policy</h3>
+      <h3>{{privacyPolicyTitle}}</h3>
       <a class="close" href="#" (click)="closePrivacyPolicyModal()">×</a>
     </div>
-    <div class="custom-modal-content">
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
-        rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur
-        et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-        Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <div class="custom-modal-content" [innerHtml]="privacyPolicy">
     </div>
     <div class="custom-modal-footer">
       <button type="button" class="btn btn-outline btn-outline-secondary"
