@@ -11,6 +11,7 @@ export class LogIn implements Action {
   
   readonly type = AuthActionTypes.LOGIN;
   constructor(public payload: any) {
+    
   }
 }
 

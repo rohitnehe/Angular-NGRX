@@ -35,7 +35,7 @@ h6 {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
 }
 h2 {
   font-size: 2.5rem;
@@ -89,7 +89,7 @@ ul {
   span {
     font-size: 4rem;
     font-weight: 400;
-    line-height: .5;
+    line-height: 0.5;
   }
 }
 
@@ -141,6 +141,94 @@ ul {
     }
     .btn {
       margin: 0 1rem;
+    }
+  }
+
+  /*setup profile steps wrapper and style*/
+
+  &.profile-wrapper {
+    display: block;
+    height: 100%;
+    .logo {
+      padding-bottom: 3rem;
+    }
+    .profile-steps {
+      display: flex;
+      width: 500px;
+      position: relative;
+      margin: 0 auto;
+      margin-bottom: 7rem;
+      counter-reset: steps;
+      position: relative;
+      li {
+        padding: 0;
+        position: relative;
+        display: block;
+        float: left;
+        width: 25%;
+        text-align: center;
+        font-size: 1.5rem;
+        color: $gray-color;
+        &::before {
+          content: counter(steps);
+          counter-increment: steps;
+          background: transparent;
+          color: $gray-color;
+          border: 2px solid $gray-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          text-align: center;
+          width: 4rem;
+          height: 4rem;
+          margin: 0 auto 1rem auto;
+          position: relative;
+          font-size: 1.5rem;
+          z-index: 2;
+        }
+
+        &:after {
+          width: 60%;
+          height: 2px;
+          content: "";
+          position: absolute;
+          background-color: #7d7d7d;
+          top: 2rem;
+          left: 71%;
+          z-index: -1;
+        }
+
+        &.active {
+          color: $primary-color;
+          &:before {
+            background-color: $primary-color;
+            color: $white;
+            border-color: $primary-color;
+          }
+        }
+
+        &.completed {
+          color: $text-color;
+          &:before {
+            font-family: "icomoon";
+            content: "\e901";
+            background-color: $success;
+            color: $white;
+            border-color: $success;
+          }
+          &:after {
+            background-color: $success;
+          }
+        }
+
+        &:last-of-type {
+          &:after {
+            // Hide last progress bar
+            display: none;
+          }
+        }
+      }
     }
   }
 }
