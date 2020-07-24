@@ -88,14 +88,15 @@ ul {
 /*create account page css*/
 .logo {
   margin: 0 auto;
-  padding-top: 2rem;
+  padding: 2rem 0;
   text-align: center;
+  flex-basis: 100%;
 }
 .form-wrapper {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: calc(100% - 109px);
+  height: calc(100% - 40px);
+  flex-wrap: wrap;
   form {
     width: 375px;
     margin: 0 auto;
