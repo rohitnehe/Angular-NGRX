@@ -30,7 +30,7 @@ export class CreateAccountComponent implements OnInit {
   validationMessage: object;
   hidePassword: boolean;
   hideConfirmPassword: boolean;
-  user: any;
+  user: User = new User();
   isUserCreated: boolean;
 
   constructor(
@@ -80,9 +80,8 @@ export class CreateAccountComponent implements OnInit {
   // create account form submit
   submit() {
     if (this.registerForm.status === 'VALID') {
-      const email = this.registerForm.value.email;
-      const password = this.registerForm.value.password;
-      this.user = Object.assign({email, password});
+      this.user.email = this.registerForm.value.email;
+      this.user.password = this.registerForm.value.password;
       try {
         this.userService.createAccount(this.user).subscribe(data => {
           if (data.accessToken) {

@@ -13,13 +13,13 @@ import { AuthEffects } from './store/effects/auth.effects';
     CommonModule,
     FormsModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    // StoreModule.forRoot(reducers, {}),
+    // EffectsModule.forRoot([AuthEffects])
   ],
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([AuthEffects])
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
