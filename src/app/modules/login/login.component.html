@@ -1,12 +1,20 @@
 
+<div *ngIf="errorMessage">
+  <div class="alert alert-danger" role="alert">
+    {{errorMessage}}
+  </div>
+</div>
+
 <div class="form-wrapper">
   <div class="logo pb-0">
     <img src="../../../assets/img/logo.jpg" alt="logo">
   </div>
   <div>
-    <h1 class="text-center pb-5 mb-5">Log In To Your Account</h1>
+    <h1 class="text-center mb-3">Log In To Your Account</h1>
+    <p class="text-center pb-4 mb-5">Your not registered? <a href="javascript:void(0)"
+        [routerLink]="['/create-account']">Signup Now</a></p>
     <!--LOGIN FORM-->
-    <form [formGroup]="loginForm" novalidate>
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
       <div class="form-group has-float-label">
         <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
         <label for="username">User Name</label>
@@ -15,20 +23,29 @@
           *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
           class="error-msg">
           <span *ngIf="loginForm.controls['username'].errors.required">
-            User name is required.
+            {{validationMessage['email-required']}}
+          </span>
+          <span *ngIf="loginForm.controls['username'].errors?.pattern">
+            {{validationMessage['email-pattern']}}
           </span>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon position-relative">
-        <input class="form-control" type="password" id="password" placeholder="Password" formControlName="password">
+        <input class="form-control" [type]="hidePassword ? 'password' : 'text'"  id="password" placeholder="Password" formControlName="password">
         <label for="password">Password</label>
-        <i class="icon-eye"></i>
+        <i (click)="hidePassword = !hidePassword" class="pointer"
+        [ngClass]="hidePassword ? 'icon-eye-off' : 'icon-eye'"></i>
         <div
           *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
           class="error-msg">
           <span *ngIf="loginForm.controls['password'].errors.required">
-            Password is required.
+            {{validationMessage['password-required']}}
           </span>
+        </div>
+        <div
+          *ngIf="loginForm.controls['password'].errors?.minlength || loginForm.controls['password'].errors?.pattern"
+          class="error-msg">
+          {{validationMessage['password-pattern']}}
         </div>
       </div>
 

@@ -14,6 +14,12 @@
   box-shadow: 0 4px 7px 2px rgba(196, 208, 222, 0.38);
 }
 
+.btn-secondary {
+  background-color:$light-gray;
+  border-color: $light-gray;
+  box-shadow: none;
+}
+
 .btn.active.focus,
 .btn.active:focus,
 .btn.focus,

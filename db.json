@@ -153,6 +153,16 @@
         "confirm-password-required": "Confirm Password is required.",
         "password-mismatch": "Password and Confirm Password do not match."
       }
+    },
+    {
+      "id": 2,
+      "key": "login",
+      "messages": {
+        "email-required": "Email is required.",
+        "email-pattern": "Please enter valid email address.",
+        "password-required": "Password is required.",
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters."
+      }
     }
   ],
   "staticContent": [

@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   },
 
+  {
+    path: 'setup-profile',
+    loadChildren: () => import('./modules/setup-profile/setup-profile.module').then(m => m.SetupProfileModule)
+  },
 
   {
     path: 'create-account',
