@@ -31,9 +31,14 @@
       "id": 6
     },
     {
-      "email": "test4@gmail.com",
-      "password": "rohan",
+      "email": "test3@gmail.com",
+      "password": "$2a$10$i0851BZYntQoKdKWuPKKNe/i0Qd2X5GU5EFfHYB6gXho7waZtNF06",
       "id": 7
+    },
+    {
+      "email": "test4@gmail.com",
+      "password": "$2a$10$8xH0tJJizff8APdKwyJSYeSvIZJYJuHOasrc1wD.10ACxMq5M2sh2",
+      "id": 8
     }
   ],
   "posts": [

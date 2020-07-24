@@ -5,7 +5,7 @@
   <div>
     <h1 class="text-center pb-5 mb-5">Log In To Your Account</h1>
     <!--LOGIN FORM-->
-    <form [formGroup]="loginForm" novalidate>
+    <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
       <div class="form-group has-float-label">
         <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
         <label for="username">User Name</label>

@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthService } from '../app/shared/services/auth.service';
+import { TokenInterceptor } from '../app/shared/services/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {SharedModule} from '../app/shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,10 +19,18 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
-    //StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    HttpClientModule,
+    SharedModule
   ],
-  providers: [],
+  
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

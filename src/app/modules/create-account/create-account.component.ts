@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-create-account',
@@ -23,7 +23,7 @@ export class CreateAccountComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         username: ['', Validators.required],
-        password: ['', Validators.required],
+        password: ['', Validators.required,Validators.minLength(8),Validators.pattern('[a-zA-Z0-9\'.&_-]+$')],
         confirmPassword: ['', Validators.required],
       }
     );

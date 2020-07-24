@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { User } from '../shared/store/models/user';
+import { User } from '../store/models/user';
 
 
 @Injectable()
@@ -16,6 +16,7 @@ export class AuthService {
   }
 
   logIn(email: string, password: string): Observable<any> {
+    console.log('in4')
     const url = `${this.BASE_URL}/login`;
     return this.http.post<User>(url, {email, password});
   }
