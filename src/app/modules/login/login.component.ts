@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { AppState, } from '../../shared/store/app.states';
 
 import { LogIn } from '../../shared/store/actions/auth.actions';
+import { UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,29 +17,75 @@ import { LogIn } from '../../shared/store/actions/auth.actions';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  validationMessage: object;
   user: User = new User();
+  isAlert = false;
+  type: string;
+  message = '';
+  hidePassword: boolean;
   constructor(private fb: FormBuilder,
-    private store: Store<AppState>
-    ) { }
+    private store: Store<AppState>,
+    private userService: UserService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.createLoginForm();
+
+  }
+  //create Login Form
+  createLoginForm() {
+    this.hidePassword = true;
     this.loginForm = this.fb.group(
       {
-        username: ['', Validators.required],
-        password: ['', Validators.required],
+        username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
+        password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@$!%*#?&]+$')]],
       }
     );
+    this.getValidationMessage();
+  }
+
+  //get validation messages
+  getValidationMessage() {
+    this.userService.validationMessage().subscribe(response => {
+      this.validationMessage = response[0].messages;
+    }, (error) => { this.errorCallback(error) });
+  }
+
+  // display server errors
+  errorCallback(error: any) {
+    window.scroll(0, 0);
+    if (error.error.status === 403 || error.status === 404) {
+      this.router.navigate(['/page-not-found']);
+    } else {
+      this.isAlert = true;
+      this.type = 'danger';
+      this.message = error.message ? error.message : this.message;
+    }
+  }
+
+  // Mark controls of form as touched.
+  markControlsAsTouched(formRef: FormGroup) {
+    for (const property in formRef.controls) {
+      if (property) {
+        formRef.controls[property].markAsTouched();
+      }
+    }
+    window.scroll(0, 0);
   }
 
 
+  //submit login form
   onSubmit(): void {
-    
-    console.log('in1');
-    const payload = {
-      email: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    };
-    console.log(payload);
-    this.store.dispatch(new LogIn(payload));
+    if (this.loginForm.status === 'VALID') {
+      const payload = {
+        email: this.loginForm.value.username,
+        password: this.loginForm.value.password
+      };
+      this.store.dispatch(new LogIn(payload));
+    }
+    else {
+      this.markControlsAsTouched(this.loginForm);
+    }
   }
 }

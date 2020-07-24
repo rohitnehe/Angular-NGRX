@@ -73,7 +73,7 @@ export class CreateAccountComponent implements OnInit {
 
   // get validation messages
   getValidationMessage() {
-    this.userService.validationMessage().subscribe(response => {
+    this.userService.loginValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error) });
   }

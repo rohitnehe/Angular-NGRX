@@ -59,6 +59,26 @@
       "email": "bits@benchmarkit.solutions",
       "password": "$2a$10$visdmGVCuXLOQW7Om4ZqN.NVrIwnPuJd50hd5kbLDDrPyYul5BHAi",
       "id": "24709acd-221b-4768-a223-db098b3b2687"
+    },
+    {
+      "email": "rohanprabhune@benchmarkit.solutions",
+      "password": "$2a$10$8yedgW.2cu7rUcwzwwR.v.l3qY53wkVfj7ZkyIj/CbQvdIyA9Poey",
+      "id": "6f692b5b-5749-4869-960c-7bd8b6acf98d"
+    },
+    {
+      "email": "rohanprabhune1@benchmarkit.solutions",
+      "password": "$2a$10$Wtjnh5jMCLQ47seUXr5UD.s8/mrgRai22IyX4.Bni4QQgH2iQZKoq",
+      "id": "1b801577-76d9-4911-b1c9-6c220ac248c5"
+    },
+    {
+      "email": "rohanprabhune2@benchmarkit.solutions",
+      "password": "$2a$10$yVFzXga0fQE7sUPk0h3wy.3zCWNB5L40RtuR2SBoWNTn9fGIZLvpq",
+      "id": "43f7fc19-1b85-416b-81fa-cbc6528f6bba"
+    },
+    {
+      "email": "pranay.palaskar@benchmarkit.solutions",
+      "password": "$2a$10$Nj3rfV0caip2aUZvNtoRne8zRFcqS5FbzFHbfNYz9OAWnsf6i1iMa",
+      "id": "f5b136a7-4220-499b-9188-9f8880b86cbe"
     }
   ],
   "validationMessage": [
@@ -73,7 +93,18 @@
         "confirm-password-required": "Confirm Password is required.",
         "password-mismatch": "Password and Confirm Password do not match."
       }
+    },
+    {
+      "id": 2,
+      "key": "login",
+      "messages": {
+        "email-required": "Email is required.",
+        "email-pattern": "Please enter valid email address.",
+        "password-required": "Password is required.",
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
+       }
     }
+
   ],
   "staticContent": [
     {
