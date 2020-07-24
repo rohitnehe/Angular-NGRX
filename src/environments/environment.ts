@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  userServiceUrl: 'http://localhost:3000/users',
+  serviceUrl: 'http://localhost:3000/',
 };
 
 

@@ -7,10 +7,18 @@ import { environment } from '../../../environments/environment';
 })
 export class UserService {
 
+  url: string;
+
   constructor(private apiService: ApiService) { }
 
-  createUser(userdata: object) {
-    return this.apiService.Request(environment.userServiceUrl, HttpReqMethod.POST.toString(), userdata);
+  // create user
+  createAccount(userdata: object) {
+    return this.apiService.Request(environment.serviceUrl + 'users/', HttpReqMethod.POST.toString(), userdata);
+  }
+
+  // validation messages for create user
+  validationMessage() {
+    return this.apiService.Request(environment.serviceUrl + 'validationMessage?title=create-account', HttpReqMethod.GET.toString());
   }
 
 }

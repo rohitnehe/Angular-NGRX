@@ -34,13 +34,24 @@
       "email": "test3@gmail.com",
       "password": "$2a$10$i0851BZYntQoKdKWuPKKNe/i0Qd2X5GU5EFfHYB6gXho7waZtNF06",
       "id": 7
+    },
+    {
+      "email": "test4@gmail.com",
+      "password": "$2a$10$aj2TzfLPj6hAzgakGip9buPHPcvLR6kPOZF29h2mZHtX83yDVzBPy",
+      "id": 8
     }
   ],
-  "posts": [
+  "validationMessage": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "create-account",
+      "messages": {
+        "name-required": "User name is required.",
+        "password-required": "Password is required.",
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
+        "confirm-password-required": "Confirm Password is required.",
+        "password-mismatch": "Password and Confirm Password do not match."
+      }
     }
   ]
 }

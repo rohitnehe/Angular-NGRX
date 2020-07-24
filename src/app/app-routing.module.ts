@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -19,11 +20,15 @@ const routes: Routes = [
     loadChildren: () => import('./modules/create-account/create-account.module').then(m => m.CreateAccountModule)
   },
 
-
   {
     path: '',
     redirectTo: '/create-account',
     pathMatch: 'full'
+  },
+
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
   },
 ];
 
