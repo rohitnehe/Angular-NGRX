@@ -35,7 +35,7 @@
 }
 
 .custom-modal {
-  margin: 7rem auto;
+  margin: 0rem auto;
   background: #fff;
   border-radius: 5px;
   width: 100%;
@@ -78,6 +78,7 @@
 }
   @media screen and (min-width: 992px){
    max-width: 800px;
+   margin: 7rem auto;
   }
 }
 

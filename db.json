@@ -37,15 +37,35 @@
     },
     {
       "email": "test4@gmail.com",
-      "password": "$2a$10$8xH0tJJizff8APdKwyJSYeSvIZJYJuHOasrc1wD.10ACxMq5M2sh2",
+      "password": "$2a$10$aj2TzfLPj6hAzgakGip9buPHPcvLR6kPOZF29h2mZHtX83yDVzBPy",
       "id": 8
     }
   ],
-  "posts": [
+  "validationMessage": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "key": "create-account",
+      "messages": {
+        "name-required": "User name is required.",
+        "password-required": "Password is required.",
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
+        "confirm-password-required": "Confirm Password is required.",
+        "password-mismatch": "Password and Confirm Password do not match."
+      }
+    }
+  ],
+  "staticContent": [
+    {
+      "id": 1,
+      "key": "terms-of-service",
+      "title": "Terms of Services",
+      "content": "<p>Terms of Services Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p> <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p> <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p> <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>"
+    },
+    {
+      "id": 2,
+      "key": "privacy-policy",
+      "title": "Privacy Policy",
+      "content": "<p>Privacy Policy Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p> <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p> <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p> <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>"
     }
   ]
 }

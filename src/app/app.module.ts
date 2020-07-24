@@ -11,6 +11,8 @@ import { AuthService } from '../app/shared/services/auth.service';
 import { TokenInterceptor } from '../app/shared/services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SharedModule} from '../app/shared/shared.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent
