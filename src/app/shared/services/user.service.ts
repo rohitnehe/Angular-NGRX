@@ -17,7 +17,7 @@ export class UserService {
   }
 
   // validation messages for create user
-  validationMessage() {
+  signupValidationMessage() {
     return this.apiService.Request(environment.serviceUrl + 'validationMessage?key=create-account', HttpReqMethod.GET.toString());
   }
 
