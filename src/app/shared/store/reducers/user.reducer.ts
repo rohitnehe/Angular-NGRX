@@ -6,6 +6,8 @@ export function UserReducer(state: Array<User>, action: UserAction) {
 
     switch (action.type) {
         case UserActionTypes.ADD_USER:
+            console.log(state);
+            console.log(action.payload);
             return [...state, action.payload];
         default:
             return state;
