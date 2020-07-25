@@ -8,6 +8,9 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService as AuthGuard } from './services/auth.guard.service';
+
+
 
 @NgModule({
   declarations: [],
@@ -25,6 +28,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   providers: [
     AuthService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

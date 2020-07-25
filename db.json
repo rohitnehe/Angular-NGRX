@@ -339,6 +339,16 @@
       "email": "rohanprabhune1334@benchmarkit.solutions",
       "password": "$2a$10$iiIR.V7njSNWLJJmFmZC/ubUMsF6yTcvEvq3PqNRuPxq7lQ3XK.Iu",
       "id": 55
+    },
+    {
+      "email": "rohanprabhune712@benchmarkit.solutions",
+      "password": "$2a$10$8MHTutWzmdSpbFL/v0tijOWwigche1Mw3Zi9zSuLteFUluo3DiONu",
+      "id": 56
+    },
+    {
+      "email": "rohanprabhune888@benchmarkit.solutions",
+      "password": "$2a$10$pDXO.ANh7U0w54rI2zyERuKPHExDNvRAvofHkEOG2rZSwXB42BH8C",
+      "id": 57
     }
   ],
   "validationMessage": [
@@ -352,6 +362,15 @@
         "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
         "confirm-password-required": "Confirm Password is required.",
         "password-mismatch": "Password and Confirm Password do not match."
+      }
+    },
+    {
+      "id": 2,
+      "key": "login",
+      "messages": {
+        "email-required": "Email is required.",
+        "email-pattern": "Please enter valid email address.",
+        "password-required": "Password is required."
       }
     }
   ],
