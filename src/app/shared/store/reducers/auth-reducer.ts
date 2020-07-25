@@ -25,7 +25,7 @@ export interface State {
           ...state,
           isAuthenticated: true,
           user: {
-            token: action.payload.token,
+            accessToken: action.payload.token,
             email: action.payload.email
           },
           errorMessage: null
@@ -43,7 +43,7 @@ export interface State {
           ...state,
           isAuthenticated: true,
           user: {
-            token: action.payload.token,
+            accessToken: action.payload.token,
             email: action.payload.email
           },
           errorMessage: null

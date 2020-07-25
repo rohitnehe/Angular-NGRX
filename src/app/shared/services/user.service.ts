@@ -14,7 +14,8 @@ export class UserService {
     return this.apiService.Request(environment.serviceUrl + 'validationMessage?key=create-account', HttpReqMethod.GET.toString());
   }
 
-  loginValidationMessage(){
+  loginValidationMessage() {
+    console.log(environment.serviceUrl + 'validationMessage?key=login');
     return this.apiService.Request(environment.serviceUrl + 'validationMessage?key=login', HttpReqMethod.GET.toString());
   }
 

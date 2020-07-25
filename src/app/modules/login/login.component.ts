@@ -38,7 +38,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLoginForm();
-   
+    this.getState.subscribe((state) => {
+      this.errorMessage = state.errorMessage;
+    });
   }
   //create Login Form
   createLoginForm() {
@@ -51,9 +53,7 @@ export class LoginComponent implements OnInit {
     );
     this.getValidationMessage();
 
-    this.getState.subscribe((state) => {
-      this.errorMessage = state.errorMessage;
-    });
+  
   }
 
   //get validation messages
