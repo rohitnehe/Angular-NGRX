@@ -20,12 +20,30 @@
   </ul>
   <!--STEPS END-->
   <div class="w-100 float-left mb-5">
-    <form>
-
-      <div class="d-flex pt-5">
-        <button class="btn btn-lg btn-secondary w-100">Next</button>
+    <div class="profile-upload">
+      <!--PICTURE UPLOAD-->
+      <div class="avatar-wrapper">
+        <div class="upload-button">
+         <img src="/assets/img/man.svg">
+        </div>
+        <input class="file-upload" type="file"/>
       </div>
-    </form>
+      <p class="text-center upload-image-text">Drang & drop on click on the image<br> above to upload your image</p>
+        <!--PICTURE UPLOAD END-->
+
+        <!--PICTURE PREVIEW-->
+        <div class="picture-preview mb-4 d-none">
+          <img src="/assets/img/avatar.png">
+        </div>
+        <div class="actions mb-5 d-none">
+          <a>Delete</a>  <a>Confirm</a>
+        </div>
+        <!--PICTURE PREVIEW END-->
+
+      <div class="d-flex pt-5 justify-content-center">
+        <button class="btn btn-lg btn-primary w-100 disabled" [routerLink]="['/setup-profile/address']">Next</button>
+      </div>
+    </div>
   </div>
 </div>
 

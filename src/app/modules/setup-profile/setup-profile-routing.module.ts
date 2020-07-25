@@ -1,3 +1,4 @@
+import { ProfileSetupCompleteComponent } from './profile-setup-complete/profile-setup-complete.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SecurityComponent } from './security/security.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   },
   {
     path: 'security', component: SecurityComponent
+  },
+
+  {
+    path: 'profile-setup-complete', component: ProfileSetupCompleteComponent
   }
 ];
 

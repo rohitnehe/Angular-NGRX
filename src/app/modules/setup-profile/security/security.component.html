@@ -1,1 +1,71 @@
-<p>security works!</p>
+<div class="form-wrapper profile-wrapper">
+  <div class="logo">
+    <img src="../../../assets/img/logo.jpg" alt="logo">
+  </div>
+  <h1 class="text-center mb-5">Set Up Your Profile</h1>
+  <!--STEPS START-->
+  <ul class="profile-steps">
+    <li class="profile-steps-item completed">
+      Bio Details
+    </li>
+    <li class="profile-steps-item completed">
+      Profile Picture
+    </li>
+    <li class="profile-steps-item active">
+      Address
+    </li>
+    <li class="profile-steps-item">
+      steps
+    </li>
+  </ul>
+  <!--STEPS END-->
+  <div class="w-100 float-left mb-5">
+    <form class="w-100">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <span class="plain-select">
+                    <select class="form-control" id="select1">
+                        <option value="" selected>Select Security Question</option>
+                        <option>Question 1</option>
+                        <option>Question 2</option>
+                        <option>Question 3</option>
+                        <option>Question 4</option>
+                    </select>
+                </span>
+            </div>
+              <div class="form-group has-float-label">
+                <input class="form-control" type="text" id="answerfirst" placeholder="Type Answer">
+                <label for="answerfirst">Type Answer</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <span class="plain-select">
+                    <select class="form-control" id="select1">
+                        <option value="" selected>Select Security Question</option>
+                        <option>Question 1</option>
+                        <option>Question 2</option>
+                        <option>Question 3</option>
+                        <option>Question 4</option>
+                    </select>
+                </span>
+            </div>
+              <div class="form-group has-float-label">
+                <input class="form-control" type="text" id="answersecond" placeholder="Type Answer">
+                <label for="answersecond">Type Answer</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-x-0 pt-x-0 mt-5 pt-5">
+        <button class="btn btn-lg btn-primary w-100 disabled" [routerLink]="['/setup-profile/profile-setup-complete']">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+

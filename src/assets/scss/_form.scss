@@ -87,10 +87,6 @@ select:disabled {
     font-size: 1.6rem;
     top: 0;
   }
-  .form-control:focus {
-    outline: none;
-    box-shadow: none;
-  }
 
   /*when you want to add icon for field at start just add this "field-with-icon" class with "has-float-label" this class*/
 
@@ -119,5 +115,56 @@ select:disabled {
   input.form-control:-webkit-autofill ~ label {
     top: -1rem;
     line-height: 1.07142857;
+  }
+}
+
+
+.plain-select {
+  display: block;
+  position: relative;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none;
+    padding-right: 2rem;
+    border-radius: 0;
+    padding-left: 0px;
+    option {
+      font-size: 1.5rem;
+    }
+    &.form-control {
+      padding-bottom: 1.2rem;
+    line-height: 1;
+    }
+  }
+
+  &:after {
+    font-family: 'icomoon' !important;
+    content: "\e908";
+    position: absolute;
+    z-index: 2;
+    right: 19px;
+    top: -5px;
+    margin-top: 0px;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+    font-size: 2rem;
+  }
+
+  .select-label {
+    color: $text-color;
+    font-size: 0.8125rem;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:0px;
+    top:-1.25rem;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
   }
 }
