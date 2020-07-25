@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { User } from '../store/models/user';
 import { environment } from '../../../environments/environment';
 
@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   getToken(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   }
 
   logIn(email: string, password: string): Observable<any> {
@@ -22,5 +22,10 @@ export class AuthService {
   signUp(email: string, password: string): Observable<User> {
     const url = environment.serviceUrl + 'register';
     return this.http.post<User>(url, { email, password });
+  }
+
+  getStatus(): Observable<User> {
+    const url = environment.serviceUrl + 'status';
+    return this.http.get<User>(url);
   }
 }

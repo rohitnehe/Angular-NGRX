@@ -261,8 +261,8 @@
       "id": 39
     },
     {
-      "email": "rohan@mail.com",
-      "password": "rohan",
+      "email": "roger@test.com",
+      "password": "$2a$10$eA8dM35AwFn9W9UJvHZ96.vVKae97Y24VgZe1NhBFbl0NqLsyvpiu",
       "id": 40
     }
   ],
@@ -280,7 +280,7 @@
       }
     },
     {
-      "id": 1,
+      "id": 2,
       "key": "login",
       "messages": {
         "email-required": "Email is required.",
@@ -288,7 +288,6 @@
         "password-required": "Password is required."
       }
     }
-   
   ],
   "staticContent": [
     {

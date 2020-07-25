@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
 import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from './services/auth.service';
-import { TokenInterceptor } from './services/token.interceptor';
+import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -34,6 +34,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       useClass: TokenInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
 })
 export class SharedModule { }

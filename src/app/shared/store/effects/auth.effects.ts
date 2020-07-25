@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
@@ -11,10 +10,9 @@ import { tap } from 'rxjs/operators';
 import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure,
-  SignUp, SignUpSuccess, SignUpFailure
+  SignUp, SignUpSuccess, SignUpFailure, LogOut
 } from '../actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
-
 
 @Injectable()
 export class AuthEffects {
@@ -25,7 +23,7 @@ export class AuthEffects {
     private router: Router,
   ) { }
 
-  // effects go here
+  //added effects for login (call to login service if success call login success action  if failure call action login failure)
   @Effect()
   LogIn: Observable<any> = this.actions.pipe
     (ofType(AuthActionTypes.LOGIN))
@@ -41,15 +39,18 @@ export class AuthEffects {
           return Observable.of(new LogInFailure({ error: error }));
         });
     })
-
+  
+  //added effects for login success here access token has been set in localstorage and it will redirect to setup profile page
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
       localStorage.setItem('accessToken', user.payload.token);
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/setup-profile']);
     })
   );
+
+  //added effect for login failure 
 
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
@@ -75,9 +76,8 @@ export class AuthEffects {
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
-      console.log(user);
-      localStorage.setItem('accessToken', user.payload.accessToken);
-      this.router.navigate(['/login']);
+      localStorage.setItem('accessToken', user.payload.token);
+      
     })
   );
 
@@ -86,4 +86,12 @@ export class AuthEffects {
     ofType(AuthActionTypes.SIGNUP_FAILURE)
   );
 
+  @Effect({ dispatch: false })
+  public LogOut: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.LOGOUT),
+    tap((user) => {
+      localStorage.removeItem('accessToken');
+      this.router.navigate(['/login']);
+    })
+  );
 }
