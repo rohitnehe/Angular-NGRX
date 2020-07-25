@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../shared/store/models/user';
-
 import { Store } from '@ngrx/store';
-import { AppState,selectAuthState } from '../../shared/store/app.states';
-
+import { AppState, selectAuthState } from '../../shared/store/app.states';
 import { LogIn } from '../../shared/store/actions/auth.actions';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
@@ -19,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
-  
   user: User = new User();
   getState: Observable<any>;
   isAlert = false;
@@ -28,11 +25,12 @@ export class LoginComponent implements OnInit {
   hidePassword: boolean;
   errorMessage: string | null;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private store: Store<AppState>,
     private userService: UserService,
-    private router: Router,
-  ) { 
+    private router: Router
+  ) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -42,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = state.errorMessage;
     });
   }
-  //create Login Form
+  // create Login Form
   createLoginForm() {
     this.hidePassword = true;
     this.loginForm = this.fb.group(
@@ -52,15 +50,13 @@ export class LoginComponent implements OnInit {
       }
     );
     this.getValidationMessage();
-
-  
   }
 
-  //get validation messages
+  // get validation messages
   getValidationMessage() {
     this.userService.loginValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   // display server errors
@@ -85,14 +81,13 @@ export class LoginComponent implements OnInit {
     window.scroll(0, 0);
   }
 
-
-  //submit login form
+  // submit login form
   onSubmit(): void {
     if (this.loginForm.status === 'VALID') {
       const payload = {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
-      };     
+      };
       this.store.dispatch(new LogIn(payload));
     }
     else {

@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 import {
   AuthActionTypes,
   LogIn, LogInSuccess, LogInFailure,
-  SignUp, SignUpSuccess, SignUpFailure, LogOut
+  SignUp, SignUpSuccess, SignUpFailure
 } from '../actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
 
@@ -23,24 +23,22 @@ export class AuthEffects {
     private router: Router,
   ) { }
 
-  //added effects for login (call to login service if success call login success action  if failure call action login failure)
+  // added effects for login (call to login service if success call login success action  if failure call action login failure)
   @Effect()
   LogIn: Observable<any> = this.actions.pipe
-    (ofType(AuthActionTypes.LOGIN))
-    .map((action: LogIn) => action.payload)
-    .switchMap(payload => {
-      return this.authService.logIn(payload.email, payload.password)
-        .map((user) => {
-          
-          return new LogInSuccess({token: user.accessToken, email: payload.email});
-        })
-        .catch((error) => {
-         
-          return Observable.of(new LogInFailure({ error: error }));
-        });
-    })
-  
-  //added effects for login success here access token has been set in localstorage and it will redirect to setup profile page
+  (ofType(AuthActionTypes.LOGIN))
+  .map((action: LogIn) => action.payload)
+  .switchMap(payload => {
+    return this.authService.logIn(payload.email, payload.password)
+      .map((user) => {
+        return new LogInSuccess({token: user.accessToken, email: payload.email});
+      })
+      .catch((error) => {
+        return Observable.of(new LogInFailure({ error: error }));
+      });
+  });
+
+  // added effects for login success here access token has been set in localstorage and it will redirect to setup profile page
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
@@ -50,8 +48,7 @@ export class AuthEffects {
     })
   );
 
-  //added effect for login failure 
-
+  // added effect for login failure
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_FAILURE),
@@ -71,13 +68,11 @@ export class AuthEffects {
         });
     });
 
-
   @Effect({ dispatch: false })
   SignUpSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
       localStorage.setItem('accessToken', user.payload.token);
-      
     })
   );
 

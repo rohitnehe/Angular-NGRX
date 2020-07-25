@@ -7,17 +7,19 @@ import 'rxjs/add/operator/do';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
-
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+
   private authService: AuthService;
+
   constructor(private injector: Injector) {}
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
     const token: string = this.authService.getToken();
     request = request.clone({
       setHeaders: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     });
@@ -27,9 +29,10 @@ export class TokenInterceptor implements HttpInterceptor {
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private router: Router) {}
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+  constructor(private router: Router) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
       .catch((response: any) => {
         if (response instanceof HttpErrorResponse && response.status === 401) {
