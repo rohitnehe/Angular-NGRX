@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
@@ -15,7 +14,6 @@ import {
 } from '../actions/auth.actions';
 import { AuthService } from '../../services/auth.service';
 
-
 @Injectable()
 export class AuthEffects {
 
@@ -25,7 +23,7 @@ export class AuthEffects {
     private router: Router,
   ) { }
 
-  // effects go here
+  //added effects for login (call to login service if success call login success action  if failure call action login failure)
   @Effect()
   LogIn: Observable<any> = this.actions.pipe
     (ofType(AuthActionTypes.LOGIN))
@@ -33,22 +31,26 @@ export class AuthEffects {
     .switchMap(payload => {
       return this.authService.logIn(payload.email, payload.password)
         .map((user) => {
-          return new LogInSuccess({ token: user.accessToken, email: payload.email });
+          
+          return new LogInSuccess({token: user.accessToken, email: payload.email});
         })
         .catch((error) => {
-          console.log(error);
+         
           return Observable.of(new LogInFailure({ error: error }));
         });
     })
-
+  
+  //added effects for login success here access token has been set in localstorage and it will redirect to setup profile page
   @Effect({ dispatch: false })
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
       localStorage.setItem('accessToken', user.payload.token);
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/setup-profile']);
     })
   );
+
+  //added effect for login failure 
 
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
@@ -75,6 +77,7 @@ export class AuthEffects {
     ofType(AuthActionTypes.SIGNUP_SUCCESS),
     tap((user) => {
       localStorage.setItem('accessToken', user.payload.token);
+      
     })
   );
 

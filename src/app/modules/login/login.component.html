@@ -17,7 +17,7 @@
     <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
       <div class="form-group has-float-label">
         <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
-        <label for="username">User Name</label>
+        <label for="username">Email</label>
 
         <div
           *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"

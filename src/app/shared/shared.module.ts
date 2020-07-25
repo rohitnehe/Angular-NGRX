@@ -9,11 +9,12 @@ import { AuthService } from './services/auth.service';
 import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService as AuthGuard } from './services/auth.guard.service';
-
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PageNotFoundComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,

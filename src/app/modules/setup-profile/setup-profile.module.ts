@@ -6,10 +6,11 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { AddressComponent } from './address/address.component';
 import { SecurityComponent } from './security/security.component';
 import { SharedModule } from '../../shared/shared.module';
+import { ProfileSetupCompleteComponent } from './profile-setup-complete/profile-setup-complete.component';
 
 
 @NgModule({
-  declarations: [BioDetailsComponent, ProfilePictureComponent, AddressComponent, SecurityComponent],
+  declarations: [BioDetailsComponent, ProfilePictureComponent, AddressComponent, SecurityComponent, ProfileSetupCompleteComponent],
   imports: [
     CommonModule,
     SetupProfileRoutingModule,
