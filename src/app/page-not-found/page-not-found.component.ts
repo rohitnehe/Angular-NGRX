@@ -8,9 +8,11 @@ import { DOCUMENT } from '@angular/common';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  ngOnInit(): void {
-  }
-
+  
   constructor() { }
+
+  ngOnInit(){
+    
+  }
 
 }
