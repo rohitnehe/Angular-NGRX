@@ -23,4 +23,9 @@ export class AuthService {
     const url = environment.serviceUrl + 'register';
     return this.http.post<User>(url, { email, password });
   }
+
+  getStatus(): Observable<User> {
+    const url = environment.serviceUrl + 'status';
+    return this.http.get<User>(url);
+  }
 }

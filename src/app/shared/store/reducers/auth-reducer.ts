@@ -59,6 +59,10 @@ export interface State {
         };
       }
 
+      case AuthActionTypes.LOGOUT: {
+        return initialState;
+      }
+
       default: {
         return state;
       }
