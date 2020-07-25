@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from './store/app.states';
 import { StoreModule } from '@ngrx/store';
 import { AuthEffects } from './store/effects/auth.effects';
-
+import { UserReducer } from './store/reducers/user.reducer';
 
 @NgModule({
   declarations: [],

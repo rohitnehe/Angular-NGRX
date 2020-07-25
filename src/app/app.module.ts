@@ -26,9 +26,9 @@ import { UserReducer } from './shared/store/reducers/user.reducer';
     HttpClientModule,
     SharedModule,
     HttpClientModule,
-    StoreModule.forRoot({
-      user: UserReducer
-    })
+    // StoreModule.forRoot({
+    //   user: UserReducer
+    // })
   ]
   ,
   providers: [

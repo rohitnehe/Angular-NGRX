@@ -32,10 +32,11 @@ export class AuthEffects {
     .switchMap(payload => {
       return this.authService.logIn(payload.email, payload.password)
         .map((user) => {
+          
           return new LogInSuccess({token: user.accessToken, email: payload.email});
         })
         .catch((error) => {
-          console.log(error);
+         
           return Observable.of(new LogInFailure({ error: error }));
         });
     })
@@ -44,7 +45,7 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap((user) => {
-      localStorage.setItem('token', user.payload.token);
+      localStorage.setItem('accessToken', user.payload.token);
       this.router.navigateByUrl('/');
     })
 );
