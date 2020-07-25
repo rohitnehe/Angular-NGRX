@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from '../../shared/services/static.data.service';
 import { Store } from '@ngrx/store';
 import { User } from '../../shared/store/models/user';
-import { AddUserAction } from '../../shared/store/actions/user.actions';
+import { SignUp } from '../../shared/store/actions/auth.actions';
+import { AppState, selectAuthState } from '../../shared/store/app.states';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-create-account',
@@ -22,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
   privacyPolicy: string;
 
   // alert message
-  message = '';
+  message: string | null;
   isAlert = false;
   type: string;
 
@@ -30,19 +33,32 @@ export class CreateAccountComponent implements OnInit {
   validationMessage: object;
   hidePassword: boolean;
   hideConfirmPassword: boolean;
-  user: User = new User();
+  user = null;
   isUserCreated: boolean;
+  getState: Observable<any>;
+  isAuthenticated: false;
+
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private staticDataService: StaticDataService,
     private router: Router,
-    private store: Store<User>
-  ) { }
+    private store: Store<AppState>
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit(): void {
     this.createForm();
+    this.getState.subscribe((state) => {
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.message = state.errorMessage;
+      if (this.user === null) {
+        this.type = 'danger';
+      }
+    });
   }
 
   // create account form
@@ -80,16 +96,12 @@ export class CreateAccountComponent implements OnInit {
   // create account form submit
   submit() {
     if (this.registerForm.status === 'VALID') {
-      this.user.email = this.registerForm.value.email;
-      this.user.password = this.registerForm.value.password;
+      const payload = {
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password
+      };
       try {
-        this.userService.createAccount(this.user).subscribe(data => {
-          if (data.accessToken) {
-            this.store.dispatch(new AddUserAction(this.user));
-            this.isUserCreated = true;
-          }
-        },
-          error => this.errorCallback(error));
+        this.store.dispatch(new SignUp(payload));
       } catch (error) { console.log(error); }
     } else {
       this.markControlsAsTouched(this.registerForm);
