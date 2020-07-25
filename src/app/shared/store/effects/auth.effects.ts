@@ -34,7 +34,7 @@ export class AuthEffects {
         return new LogInSuccess({token: user.accessToken, email: payload.email});
       })
       .catch((error) => {
-        return Observable.of(new LogInFailure({ error: error }));
+        return Observable.of(new LogInFailure({ error }));
       });
   });
 
@@ -64,7 +64,7 @@ export class AuthEffects {
           return new SignUpSuccess({ token: user.accessToken, email: payload.email });
         })
         .catch((error) => {
-          return Observable.of(new SignUpFailure({ error: error }));
+          return Observable.of(new SignUpFailure({ error }));
         });
     });
 
