@@ -8,6 +8,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from './services/auth.service';
 import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuardService as AuthGuard } from './services/auth.guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -17,7 +18,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     CommonModule,
     FormsModule,
-    
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects])
@@ -29,6 +29,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   providers: [
     AuthService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

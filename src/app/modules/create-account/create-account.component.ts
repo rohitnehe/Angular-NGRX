@@ -109,7 +109,7 @@ export class CreateAccountComponent implements OnInit {
         this.type = 'danger';
       }
       if (this.isAuthenticated) {
-        this.registerForm.reset()
+        this.registerForm.reset();
       }
     });
   }
@@ -126,7 +126,7 @@ export class CreateAccountComponent implements OnInit {
 
   // logout user
   logOut(): void {
-    this.store.dispatch(new LogOut);
+    this.store.dispatch(new LogOut());
   }
 
   // display server errors
