@@ -7,7 +7,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = environment.serviceUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -16,12 +15,12 @@ export class AuthService {
   }
 
   logIn(email: string, password: string): Observable<any> {
-    const url = this.BASE_URL + 'login';
+    const url = environment.serviceUrl + 'login';
     return this.http.post<User>(url, { email, password });
   }
 
   signUp(email: string, password: string): Observable<User> {
-    const url = this.BASE_URL + 'register';
+    const url = environment.serviceUrl + 'register';
     return this.http.post<User>(url, { email, password });
   }
 }
