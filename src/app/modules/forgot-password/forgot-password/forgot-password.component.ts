@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
+  sentMesaage = false;
+  forgotPasswordForm = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sentEmailMessage() {
+    this.sentMesaage = true;
+    this.forgotPasswordForm = false;
   }
 
 }
