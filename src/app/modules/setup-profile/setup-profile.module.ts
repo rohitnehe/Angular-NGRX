@@ -6,10 +6,11 @@ import { BioDetailsComponent } from './bio-details/bio-details.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { AddressComponent } from './address/address.component';
 import { SecurityComponent } from './security/security.component';
+import { ProfileSetupCompleteComponent } from './profile-setup-complete/profile-setup-complete.component';
 
 
 @NgModule({
-  declarations: [BioDetailsComponent, ProfilePictureComponent, AddressComponent, SecurityComponent],
+  declarations: [BioDetailsComponent, ProfilePictureComponent, AddressComponent, SecurityComponent, ProfileSetupCompleteComponent],
   imports: [
     CommonModule,
     SetupProfileRoutingModule
