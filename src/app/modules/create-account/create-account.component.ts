@@ -4,11 +4,9 @@ import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from '../../shared/services/static.data.service';
 import { Store } from '@ngrx/store';
-import { User } from '../../shared/store/models/user';
-import { SignUp } from '../../shared/store/actions/auth.actions';
+import { SignUp, LogOut } from '../../shared/store/actions/auth.actions';
 import { AppState, selectAuthState } from '../../shared/store/app.states';
 import { Observable } from 'rxjs';
-
 
 @Component({
   selector: 'app-create-account',
@@ -34,7 +32,6 @@ export class CreateAccountComponent implements OnInit {
   hidePassword: boolean;
   hideConfirmPassword: boolean;
   user = null;
-  isUserCreated: boolean;
   getState: Observable<any>;
   isAuthenticated: false;
 
@@ -51,14 +48,7 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.getState.subscribe((state) => {
-      this.isAuthenticated = state.isAuthenticated;
-      this.user = state.user;
-      this.message = state.errorMessage;
-      if (this.user === null) {
-        this.type = 'danger';
-      }
-    });
+    this.getStoreState();
   }
 
   // create account form
@@ -109,6 +99,21 @@ export class CreateAccountComponent implements OnInit {
 
   }
 
+  // get store state
+  getStoreState() {
+    this.getState.subscribe((state) => {
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.message = state.errorMessage;
+      if (this.user === null) {
+        this.type = 'danger';
+      }
+      if (this.isAuthenticated) {
+        this.registerForm.reset()
+      }
+    });
+  }
+
   // Mark controls of form as touched.
   markControlsAsTouched(formRef: FormGroup) {
     for (const property in formRef.controls) {
@@ -117,6 +122,11 @@ export class CreateAccountComponent implements OnInit {
       }
     }
     window.scroll(0, 0);
+  }
+
+  // logout user
+  logOut(): void {
+    this.store.dispatch(new LogOut);
   }
 
   // display server errors
