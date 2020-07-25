@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from '../../shared/services/static.data.service';
 import { Store } from '@ngrx/store';
 import { User } from '../../shared/store/models/user';
-import { AddUserAction } from '../../shared/store/actions/user.actions';
-import { v4 as uuidv4 } from 'uuid';
+import { SignUp } from '../../shared/store/actions/auth.actions';
+import { AppState, selectAuthState } from '../../shared/store/app.states';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-create-account',
@@ -23,7 +25,7 @@ export class CreateAccountComponent implements OnInit {
   privacyPolicy: string;
 
   // alert message
-  message = '';
+  message: string | null;
   isAlert = false;
   type: string;
 
@@ -31,19 +33,32 @@ export class CreateAccountComponent implements OnInit {
   validationMessage: object;
   hidePassword: boolean;
   hideConfirmPassword: boolean;
-  user: any;
-  isUserCreated:boolean
+  user = null;
+  isUserCreated: boolean;
+  getState: Observable<any>;
+  isAuthenticated: false;
+
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
     private staticDataService: StaticDataService,
     private router: Router,
-    private store: Store<User>
-  ) { }
+    private store: Store<AppState>
+  ) {
+    this.getState = this.store.select(selectAuthState);
+  }
 
   ngOnInit(): void {
     this.createForm();
+    this.getState.subscribe((state) => {
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.message = state.errorMessage;
+      if (this.user === null) {
+        this.type = 'danger';
+      }
+    });
   }
 
   // create account form
@@ -75,24 +90,19 @@ export class CreateAccountComponent implements OnInit {
   getValidationMessage() {
     this.userService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   // create account form submit
   submit() {
     if (this.registerForm.status === 'VALID') {
-      const email = this.registerForm.value.email;
-      const password = this.registerForm.value.password;
-      this.user = Object.assign({id: uuidv4() ,email: email, password: password });
+      const payload = {
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password
+      };
       try {
-        this.userService.createAccount(this.user).subscribe(data => {
-          if (data.accessToken) {
-            this.store.dispatch(new AddUserAction(this.user));
-            this.isUserCreated = true;
-          }
-        },
-          error => this.errorCallback(error));
-      } catch (error) { console.log(error) }
+        this.store.dispatch(new SignUp(payload));
+      } catch (error) { console.log(error); }
     } else {
       this.markControlsAsTouched(this.registerForm);
     }
@@ -111,7 +121,6 @@ export class CreateAccountComponent implements OnInit {
 
   // display server errors
   errorCallback(error: any) {
-    console.log(error);
     window.scroll(0, 0);
     if (error.error.status === 403 || error.status === 404) {
       this.router.navigate(['/page-not-found']);
@@ -128,13 +137,12 @@ export class CreateAccountComponent implements OnInit {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   closeTermsOfServicesModal() {
     this.termsOfServicesModal = false;
   }
-
 
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
@@ -142,12 +150,11 @@ export class CreateAccountComponent implements OnInit {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
-    }, (error) => { this.errorCallback(error) });
+    }, (error) => { this.errorCallback(error); });
   }
 
   closePrivacyPolicyModal() {
     this.privacyPolicyModal = false;
   }
-
 
 }

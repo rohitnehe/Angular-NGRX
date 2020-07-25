@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { User } from '../store/models/user';
 
 
@@ -20,5 +19,8 @@ export class AuthService {
     return this.http.post<User>(url, {email, password});
   }
 
-  
+  signUp(email: string, password: string): Observable<User> {
+    const url = `${this.BASE_URL}/register`;
+    return this.http.post<User>(url, {email, password});
+  }
 }

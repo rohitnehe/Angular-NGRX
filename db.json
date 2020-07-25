@@ -34,13 +34,74 @@
       "email": "test3@gmail.com",
       "password": "$2a$10$i0851BZYntQoKdKWuPKKNe/i0Qd2X5GU5EFfHYB6gXho7waZtNF06",
       "id": 7
+    },
+    {
+      "email": "test4@gmail.com",
+      "password": "$2a$10$aj2TzfLPj6hAzgakGip9buPHPcvLR6kPOZF29h2mZHtX83yDVzBPy",
+      "id": 8
+    },
+    {
+      "email": "nitin@gmail.com",
+      "password": "$2a$10$VJphKF.s.GVscNXjihWAIeBOrxpzJxXlQy/aj70tO5F/EzZaM1XzW",
+      "id": 9
+    },
+    {
+      "email": "sam@gmail.com",
+      "password": "$2a$10$JxMK5R7bJ1zkWgDNpULWsu2jKp/PrvS..eux.TeFmLYIaA5P.woBG",
+      "id": "43fc4e7b-0843-401f-91af-b9df39661c2c"
+    },
+    {
+      "email": "ganeshudmale@benchmarkit.solutions",
+      "password": "$2a$10$Wh5zQf4AXIm8R21QrIgDY.4sI1C.s0mjmzMP/ENQefVPcSO5BBfCK",
+      "id": "cf9aec9e-afb9-48ea-85f3-e843d72966e4"
+    },
+    {
+      "email": "bits@benchmarkit.solutions",
+      "password": "$2a$10$visdmGVCuXLOQW7Om4ZqN.NVrIwnPuJd50hd5kbLDDrPyYul5BHAi",
+      "id": "24709acd-221b-4768-a223-db098b3b2687"
+    },
+    {
+      "email": "rohanprabhune@benchmarkit.solutions",
+      "password": "$2a$10$8yedgW.2cu7rUcwzwwR.v.l3qY53wkVfj7ZkyIj/CbQvdIyA9Poey",
+      "id": "6f692b5b-5749-4869-960c-7bd8b6acf98d"
+    },
+    {
+      "email": "rohanprabhune1@benchmarkit.solutions",
+      "password": "$2a$10$Wtjnh5jMCLQ47seUXr5UD.s8/mrgRai22IyX4.Bni4QQgH2iQZKoq",
+      "id": "1b801577-76d9-4911-b1c9-6c220ac248c5"
+    },
+    {
+      "email": "rohanprabhune2@benchmarkit.solutions",
+      "password": "$2a$10$yVFzXga0fQE7sUPk0h3wy.3zCWNB5L40RtuR2SBoWNTn9fGIZLvpq",
+      "id": "43f7fc19-1b85-416b-81fa-cbc6528f6bba"
     }
   ],
-  "posts": [
+  "validationMessage": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "key": "create-account",
+      "messages": {
+        "email-required": "Email is required.",
+        "email-pattern": "Please enter valid email address.",
+        "password-required": "Password is required.",
+        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
+        "confirm-password-required": "Confirm Password is required.",
+        "password-mismatch": "Password and Confirm Password do not match."
+      }
+    }
+  ],
+  "staticContent": [
+    {
+      "id": 1,
+      "key": "terms-of-service",
+      "title": "Terms of Services",
+      "content": "<p>Terms of Services Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p> <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p> <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p> <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>"
+    },
+    {
+      "id": 2,
+      "key": "privacy-policy",
+      "title": "Privacy Policy",
+      "content": "<p>Privacy Policy Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p> <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p> <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p> <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>"
     }
   ]
 }

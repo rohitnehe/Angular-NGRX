@@ -1,34 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../app/shared/services/auth.service';
 import { TokenInterceptor } from '../app/shared/services/token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SharedModule} from '../app/shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { UserReducer } from './shared/store/reducers/user.reducer';
-//import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './shared/store/app.states';
+import { AuthEffects } from './shared/store/effects/auth.effects';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
     SharedModule,
     HttpClientModule,
-    // StoreModule.forRoot({
-    //   user: UserReducer
-    // })
+    StoreModule.forRoot(reducers, {}),
+    EffectsModule.forRoot([AuthEffects])
   ]
   ,
   providers: [
