@@ -264,6 +264,11 @@
       "email": "roger@test.com",
       "password": "$2a$10$eA8dM35AwFn9W9UJvHZ96.vVKae97Y24VgZe1NhBFbl0NqLsyvpiu",
       "id": 40
+    },
+    {
+      "email": "roger1@gmail.com",
+      "password": "$2a$10$fW.C04bdwvO2AxoErnSqOOUk2a/LXIN2uo3WEowGD7/VLM5aqvGV6",
+      "id": 41
     }
   ],
   "validationMessage": [

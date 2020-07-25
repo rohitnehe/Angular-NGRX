@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../../shared/store/models/user';
-
 import { Store } from '@ngrx/store';
-import { AppState,selectAuthState } from '../../shared/store/app.states';
-
+import { AppState, selectAuthState } from '../../shared/store/app.states';
 import { LogIn } from '../../shared/store/actions/auth.actions';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
@@ -19,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
-  
   user: User = new User();
   getState: Observable<any>;
   isAlert = false;
@@ -32,7 +29,7 @@ export class LoginComponent implements OnInit {
     private store: Store<AppState>,
     private userService: UserService,
     private router: Router,
-  ) { 
+  ) {
     this.getState = this.store.select(selectAuthState);
   }
 
@@ -53,7 +50,7 @@ export class LoginComponent implements OnInit {
     );
     this.getValidationMessage();
 
-  
+
   }
 
   //get validation messages
@@ -92,7 +89,7 @@ export class LoginComponent implements OnInit {
       const payload = {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
-      };     
+      };
       this.store.dispatch(new LogIn(payload));
     }
     else {
