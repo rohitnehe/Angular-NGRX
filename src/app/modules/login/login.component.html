@@ -1,9 +1,11 @@
-
-<div *ngIf="errorMessage">
-  <div class="alert alert-danger" role="alert">
-    {{errorMessage}}
+<div *ngIf="errorMessage" class="mb-0 mt-3">
+  <div class="alert alert-{{type}}" role="alert" *ngIf="errorMessage">{{ errorMessage }}
+    <button type="button" class="close" (click)="errorMessage = null" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 </div>
+
 
 <div class="form-wrapper">
   <div class="logo pb-0">
@@ -11,13 +13,13 @@
   </div>
   <div>
     <h1 class="text-center mb-3">Log In To Your Account</h1>
-    <p class="text-center pb-4 mb-5">Your not registered? <a href="javascript:void(0)"
+    <p class="text-center pb-4 mb-5">New User ? <a href="javascript:void(0)"
         [routerLink]="['/create-account']">Signup Now</a></p>
     <!--LOGIN FORM-->
     <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
       <div class="form-group has-float-label">
-        <input class="form-control" type="text" id="username" placeholder="User Name" formControlName="username">
-        <label for="username">Email</label>
+        <input class="form-control" type="text" id="username" placeholder="Email Address" formControlName="username">
+        <label for="username">Email Address</label>
 
         <div
           *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
