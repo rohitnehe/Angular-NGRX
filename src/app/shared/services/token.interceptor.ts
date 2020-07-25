@@ -5,6 +5,7 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import {_throw} from 'rxjs/observable/throw';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -38,7 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           localStorage.removeItem('accessToken');
           this.router.navigateByUrl('/login');
         }
-        return Observable.throw(response);
+        return _throw(response);
       });
   }
 }
