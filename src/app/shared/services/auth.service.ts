@@ -7,21 +7,20 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-  private BASE_URL = environment.serviceUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getToken(): string {
     return localStorage.getItem('token');
   }
 
   logIn(email: string, password: string): Observable<any> {
-    const url = `${this.BASE_URL}login`;
-    return this.http.post<User>(url, {email, password});
+    const url = environment.serviceUrl + 'login';
+    return this.http.post<User>(url, { email, password });
   }
 
   signUp(email: string, password: string): Observable<User> {
-    const url = `${this.BASE_URL}/register`;
-    return this.http.post<User>(url, {email, password});
+    const url = environment.serviceUrl + 'register';
+    return this.http.post<User>(url, { email, password });
   }
 }

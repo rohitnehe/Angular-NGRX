@@ -285,7 +285,7 @@
       "messages": {
         "email-required": "Email is required.",
         "email-pattern": "Please enter valid email address.",
-        "password-required": "Password is required.",
+        "password-required": "Password is required."
       }
     }
    
