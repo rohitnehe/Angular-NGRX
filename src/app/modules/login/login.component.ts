@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   getState: Observable<any>;
   isAlert = false;
   type: string;
-  message = '';
+  
   hidePassword: boolean;
   errorMessage: string | null;
   isAuthenticated: false;
@@ -61,11 +61,12 @@ export class LoginComponent implements OnInit {
 
   getStoreState() {
     this.getState.subscribe((state) => {
+
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
-      this.message = state.errorMessage;
-    
-      if (this.user) {
+      this.errorMessage = state.errorMessage;
+
+      if (!this.isAuthenticated) {
         this.type = 'danger';
       }
       if (this.isAuthenticated) {
