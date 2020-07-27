@@ -4,3 +4,7 @@
 .pointer{
     cursor: pointer;
 }
+
+.form-control.ng-invalid.ng-untouched.ng-pristine {
+    border-color: #c7c7c7!important;
+}
