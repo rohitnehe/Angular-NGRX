@@ -15,7 +15,9 @@ export const initialState: State = {
 
 // reducers are to manage old state and new state according to action type
 export function reducer(state = initialState, action: All): State {
+  
   switch (action.type) {
+    
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
@@ -27,10 +29,12 @@ export function reducer(state = initialState, action: All): State {
         errorMessage: null
       };
     }
+    
     case AuthActionTypes.LOGIN_FAILURE: {
       return {
+        
         ...state,
-        errorMessage: 'Credentials does not match,please try again'
+        errorMessage: action.payload.error.error
       };
     }
 
@@ -49,7 +53,7 @@ export function reducer(state = initialState, action: All): State {
     case AuthActionTypes.SIGNUP_FAILURE: {
       return {
         ...state,
-        errorMessage: 'That email is already in use.'
+        errorMessage: action.payload.error.error
       };
     }
 

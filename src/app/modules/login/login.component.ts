@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
-  user: User = new User();
+  //user: User = new User();
   getState: Observable<any>;
   isAlert = false;
   type: string;
@@ -63,19 +63,7 @@ export class LoginComponent implements OnInit {
     }, (error) => { this.errorCallback(error); });
   }
 
-  // getStoreState() {
-  //   this.getState.subscribe((state) => {
-  //    // this.isAuthenticated = state.isAuthenticated;
-  //     this.user = state.user;
-  //     this.message = state.errorMessage;
-  //     if (this.user === null) {
-  //       this.type = 'danger';
-  //     }
-  //     // if (this.isAuthenticated) {
-  //     //   this.registerForm.reset();
-  //     // }
-  //   });
-  // }
+  
 
   // display server errors
   errorCallback(error: any) {

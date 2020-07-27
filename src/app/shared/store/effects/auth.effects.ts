@@ -31,6 +31,7 @@ export class AuthEffects {
   .switchMap(payload => {
     return this.authService.logIn(payload.email, payload.password)
       .map((user) => {
+        
         return new LogInSuccess({token: user.accessToken, email: payload.email});
       })
       .catch((error) => {
@@ -78,7 +79,8 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   SignUpFailure: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.SIGNUP_FAILURE)
+    ofType(AuthActionTypes.SIGNUP_FAILURE),
+  
   );
 
   @Effect({ dispatch: false })
