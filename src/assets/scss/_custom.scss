@@ -99,6 +99,13 @@ ul {
   }
 }
 
+.passwordNotSame{
+  border-color: $danger !important
+}
+.pointer{
+  cursor: pointer;
+}
+
 /*create account page css*/
 .logo {
   margin: 0 auto;
@@ -301,3 +308,22 @@ ul {
   justify-content: space-around;
 }
 }
+
+.not-found {
+  .notfound-404 {
+     text-align: center;
+      h1 {
+          font-size:10rem;
+          margin: 0px;
+          text-transform: uppercase;
+      }
+  }
+  h2 {
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 2rem 0;
+      text-align: center;
+  }
+}
+
+
