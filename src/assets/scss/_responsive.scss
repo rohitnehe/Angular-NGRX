@@ -1,12 +1,9 @@
-/* Portrait and Landscape */
+/*responsive css */
+
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
-
-
-
-//*CREATE ACCOUNT PAGE RESPONSIVE START HERE*//
 
     .form-wrapper {
       form {
@@ -39,9 +36,7 @@
       width: 100%;
     }
 
-//*CREATE ACCOUNT PAGE RESPONSIVE END HERE*//
-
-//*BUTTONS RESPONSIVE START HERE*//
+/*buttons responsive css here*/
 
 .btn {
   min-width: 150px;
@@ -53,6 +48,5 @@
 .pt-x-0 {
   padding-top: 0!important;
 }
-////////*BUTTONS RESPONSIVE END HERE*/////////
 
 }
