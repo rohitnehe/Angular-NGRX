@@ -100,10 +100,8 @@ select:disabled {
       right: 0;
       top: 0.3rem;
       font-size: 1.8rem;
-      color: $gray-color;
-      &.icon-eye-off {
-        color: $text-color;
-      }
+      color: $text-color;
+
     }
     .user-valid {
       font-size: 1.3rem;

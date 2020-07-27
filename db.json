@@ -63,7 +63,7 @@
       "key": "login",
       "messages": {
         "email-required": {
-          "required": "Email is required."
+          "required": "Email Address is required."
         },
         "email-pattern": {
           "pattern": "Please enter valid email address."

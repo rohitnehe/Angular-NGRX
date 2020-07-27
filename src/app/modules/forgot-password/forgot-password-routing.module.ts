@@ -1,9 +1,11 @@
-import { SetNewPasswordComponent } from './set-new-password/set-new-password.component';
-import { SecurityQuestionComponent } from './security-question/security-question.component';
+
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { SecurityQuestionComponent } from './components/security-question/security-question.component';
+import { SetNewPasswordComponent } from './components/set-new-password/set-new-password.component';
+
 
 const routes: Routes = [
   {
