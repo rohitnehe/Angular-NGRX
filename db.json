@@ -24,16 +24,6 @@
       "email": "rohan@mail.com",
       "password": "$2a$10$hHK5RJsJf72RZ.6WyA4T3ezpA2TKMc2fweICl/i3srB8TMsNOq9vW",
       "id": 5
-    },
-    {
-      "email": "rohanprabhune@benchmarkit.solutions",
-      "password": "$2a$10$eLdzqF0xaIcB8X33OjWCNOB0RrDO2ZmZsurXeRm0HHK0NKwZEdS36",
-      "id": 6
-    },
-    {
-      "email": "rohanprabhune123456@benchmarkit.solutions",
-      "password": "$2a$10$.mIczqEWEDcvHp50Mbc7menBEA/u0pOC8p.1olj2en6a9yJbu2u6a",
-      "id": 7
     }
   ],
   "validationMessage": [
