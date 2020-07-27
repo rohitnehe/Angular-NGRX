@@ -44,6 +44,11 @@
               <li *ngFor="let rule of validationMessage['password-required'] | keyvalue">{{rule.value}}</li>
             </ul>
           </span>
+          <span *ngIf="registerForm.controls['password'].errors?.pattern">
+            <ul class="password-rules rules-list">
+              <li *ngFor="let rule of validationMessage['password-pattern'] | keyvalue">{{rule.value}}</li>
+            </ul>
+          </span>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon">
