@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../shared/store/models/user';
+import { User } from '../../models/user';
 import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../../shared/store/app.states';
 import { LogIn } from '../../shared/store/actions/auth.actions';
