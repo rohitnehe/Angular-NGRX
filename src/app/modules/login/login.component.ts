@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
   message = '';
   hidePassword: boolean;
   errorMessage: string | null;
+  isAuthenticated: false;
+  user:any;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -35,12 +38,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLoginForm();
-    this.getState.subscribe((state) => {
-      this.errorMessage = state.errorMessage;
-      if(!state.isAuthenticated){
-        this.type = 'danger';
-      }
-    });
+    this.getStoreState();
   }
   // create Login Form
   createLoginForm() {
@@ -61,7 +59,20 @@ export class LoginComponent implements OnInit {
     }, (error) => { this.errorCallback(error); });
   }
 
-  
+  getStoreState() {
+    this.getState.subscribe((state) => {
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.message = state.errorMessage;
+      
+      if (this.user) {
+        this.type = 'danger';
+      }
+      if (this.isAuthenticated) {
+        this.loginForm.reset();
+      }
+    });
+  }
 
   // display server errors
   errorCallback(error: any) {
@@ -71,7 +82,11 @@ export class LoginComponent implements OnInit {
     } else {
       this.isAlert = true;
       this.type = 'danger';
-      this.message = error.message ? error.message : this.message;
+      if(error.name == 'HttpErrorResponse'){
+        this.errorMessage = "Could not connect to server";
+      }else{
+        this.errorMessage = error.error ? error.error : (error.message ? error.message : this.errorMessage);
+      }
     }
   }
 
