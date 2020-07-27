@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { AuthService } from './services/auth.service';
 import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
+import { MessageComponent } from './components/message/message.component';
+
 
 @NgModule({
   declarations: [
     PageNotFoundComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import { PageNotFoundComponent } from '../shared/components/page-not-found/page-
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MessageComponent
   ],
   providers: [
    // AuthService,

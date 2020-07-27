@@ -124,14 +124,10 @@ ul {
   }
 
   .password-rules {
-    position: absolute;
-    top: -1.6rem;
-    right: -15rem;
     li {
       font-size: 1.2rem;
-      line-height: 1.6;
+      line-height: 2;
       color: $danger;
-      list-style-type: disc;
     }
   }
 
