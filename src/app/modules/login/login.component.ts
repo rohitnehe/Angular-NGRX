@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../shared/store/models/user';
 import { Store } from '@ngrx/store';
-import { AppState, selectAuthState } from '../../shared/store/app.states';
-import { LogIn } from '../../shared/store/actions/auth.actions';
-import { UserService } from 'src/app/shared/services/user.service';
+import { AppState, selectAuthState } from '../../store/app.states';
+import { LogIn } from '../../store/actions/auth.actions';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -36,7 +35,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createLoginForm();
     this.getState.subscribe((state) => {
-      console.log(state);
       this.errorMessage = state.errorMessage;
       if(!state.isAuthenticated){
         this.type = 'danger';

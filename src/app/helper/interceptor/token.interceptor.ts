@@ -3,7 +3,7 @@ import {
   HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {_throw} from 'rxjs/observable/throw';
 
@@ -16,7 +16,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.authService = this.injector.get(AuthService);
-    console.log(this.authService);
     const token: string = this.authService.getToken();
     request = request.clone({
       setHeaders: {

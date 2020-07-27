@@ -5,7 +5,7 @@ import { SecurityComponent } from './security/security.component';
 import { AddressComponent } from './address/address.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { BioDetailsComponent } from './bio-details/bio-details.component';
-import { AuthGuardService as AuthGuard} from '../../shared/services/auth.guard.service';
+import { AuthGuardService as AuthGuard} from '../../helper/auth/auth.guard.service';
 
 
 const routes: Routes = [

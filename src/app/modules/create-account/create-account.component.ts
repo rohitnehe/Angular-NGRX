@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../../shared/services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { StaticDataService } from '../../shared/services/static.data.service';
+import { StaticDataService } from '../..//services/static.data.service';
 import { Store } from '@ngrx/store';
-import { SignUp, LogOut } from '../../shared/store/actions/auth.actions';
-import { AppState, selectAuthState } from '../../shared/store/app.states';
+import { SignUp, LogOut } from '../../store/actions/auth.actions';
+import { AppState, selectAuthState } from '../../store/app.states';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -104,6 +104,7 @@ export class CreateAccountComponent implements OnInit {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.message = state.errorMessage;
+      console.log(this.message);
       if (this.user === null) {
         this.type = 'danger';
       }
@@ -130,13 +131,19 @@ export class CreateAccountComponent implements OnInit {
 
   // display server errors
   errorCallback(error: any) {
+    
     window.scroll(0, 0);
     if (error.error.status === 403 || error.status === 404) {
       this.router.navigate(['/page-not-found']);
     } else {
       this.isAlert = true;
       this.type = 'danger';
-      this.message = error.error ? error.error : (error.message ? error.message : this.message);
+      if(error.name == 'HttpErrorResponse'){
+        this.message = "Could not connect to server";
+      }else{
+        this.message = error.error ? error.error : (error.message ? error.message : this.message);
+      }
+      
     }
   }
 
