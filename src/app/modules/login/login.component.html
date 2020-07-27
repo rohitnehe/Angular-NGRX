@@ -25,10 +25,14 @@
           *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
           class="error-msg">
           <span *ngIf="loginForm.controls['username'].errors.required">
-            {{validationMessage['email-required']}}
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['email-required'] | keyvalue">{{rule.value}}</li>
+            </ul>
           </span>
           <span *ngIf="loginForm.controls['username'].errors?.pattern">
-            {{validationMessage['email-pattern']}}
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['email-pattern'] | keyvalue">{{rule.value}}</li>
+            </ul>
           </span>
         </div>
       </div>
@@ -41,7 +45,10 @@
           *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
           class="error-msg">
           <span *ngIf="loginForm.controls['password'].errors.required">
-            {{validationMessage['password-required']}}
+            <!-- {{validationMessage['password-required']}} -->
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['password-required'] | keyvalue">{{rule.value}}</li>
+            </ul>
           </span>
         </div>
         <div

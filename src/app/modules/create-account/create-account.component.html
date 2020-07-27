@@ -24,12 +24,16 @@
         <div
           *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
           class="error-msg">
-          <span *ngIf="registerForm.controls['email'].errors.required">
-            {{validationMessage['email-required']}}
-          </span>
-          <span *ngIf="registerForm.controls['email'].errors?.pattern">
-            {{validationMessage['email-pattern']}}
-          </span>
+          <div *ngIf="registerForm.controls['email'].errors.required">
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['email-required'] | keyvalue">{{rule.value}}</li>
+            </ul>
+          </div>
+          <div *ngIf="registerForm.controls['email'].errors?.pattern">
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['email-pattern'] | keyvalue">{{rule.value}}</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon position-relative">
@@ -42,14 +46,10 @@
           *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
           class="error-msg">
           <span *ngIf="registerForm.controls['password'].errors.required">
-            {{validationMessage['password-required']}}
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['password-required'] | keyvalue">{{rule.value}}</li>
+            </ul>
           </span>
-        </div>
-        <div
-          *ngIf="registerForm.controls['password'].errors?.minlength || registerForm.controls['password'].errors?.pattern">
-          <ul class="password-rules">
-            <li *ngFor="let rule of validationMessage['password-pattern'] | keyvalue">{{rule.value}}</li>
-          </ul>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon">
@@ -63,11 +63,15 @@
           *ngIf="registerForm.controls['confirmPassword'].invalid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)"
           class="error-msg">
           <span *ngIf="registerForm.controls['confirmPassword'].errors.required">
-            {{validationMessage['confirm-password-required']}}
+            <ul class="password-rules">
+              <li *ngFor="let rule of validationMessage['confirm-password-required'] | keyvalue">{{rule.value}}</li>
+            </ul>
           </span>
         </div>
         <div class="error-msg" *ngIf="registerForm.hasError('passwordNotSame')">
-          {{validationMessage['password-mismatch']}}
+          <ul class="password-rules">
+            <li *ngFor="let rule of validationMessage['password-mismatch'] | keyvalue">{{rule.value}}</li>
+          </ul>
         </div>
       </div>
       <div class="d-flex mb-5">

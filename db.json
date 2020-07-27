@@ -24,6 +24,11 @@
       "email": "rohan@mail.com",
       "password": "$2a$10$hHK5RJsJf72RZ.6WyA4T3ezpA2TKMc2fweICl/i3srB8TMsNOq9vW",
       "id": 5
+    },
+    {
+      "email": "rohanprabhune@benchmarkit.solutions",
+      "password": "$2a$10$KKdjPv8k1BAAEfB4aT746.oUIIRt8X04uiKjKR6TnWldZ78F9o2VS",
+      "id": 6
     }
   ],
   "validationMessage": [
@@ -31,25 +36,41 @@
       "id": 1,
       "key": "create-account",
       "messages": {
-        "email-required": "Email Address is required.",
-        "email-pattern": "Please enter valid email address.",
-        "password-required": "Password is required.",
+        "email-required": {
+          "required": "Email Address is required."
+        },
+        "email-pattern": {
+          "pattern": "Please enter valid email address."
+        },
+        "password-required": {
+          "required": "Password is required."
+        },
         "password-pattern": {
           "minLength": "8 Characters Long",
           "capital": "Contain one Capital",
           "numerical": "Contain one Numeral"
         },
-        "confirm-password-required": "Confirm Password is required.",
-        "password-mismatch": "Password and Confirm Password does not match."
+        "confirm-password-required": {
+          "required": "Confirm Password is required."
+        },
+        "password-mismatch": {
+          "mismatch": "Password and Confirm Password does not match."
+        }
       }
     },
     {
       "id": 2,
       "key": "login",
       "messages": {
-        "email-required": "Email is required.",
-        "email-pattern": "Please enter valid email address.",
-        "password-required": "Password is required."
+        "email-required": {
+          "required" : "Email is required."
+        },
+        "email-pattern":{
+          "pattern" :  "Please enter valid email address."
+        },
+        "password-required": {
+          "required" : "Password is required."
+        }
       }
     }
   ],

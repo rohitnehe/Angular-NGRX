@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.hidePassword = true;
     this.loginForm = this.fb.group(
       {
-        username: ['', [Validators.required]],
+        username: ['', [Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
         password: ['', [Validators.required]],
       }
     );
