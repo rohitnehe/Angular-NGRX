@@ -1,11 +1,5 @@
 <!--server message-->
-<div *ngIf="isAlert || message" class="mb-0 mt-3">
-  <div class="alert alert-{{type}}" role="alert" *ngIf="isAlert || message">{{ message }}
-    <button type="button" class="close" (click)="isAlert = null; message = null" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-</div>
+<app-message [isAlert]="isAlert" [type]="type" [message]="message"></app-message>
 <!--server message-->
 <div class="form-wrapper">
   <!--ACCOUNT CREATED FORM-->

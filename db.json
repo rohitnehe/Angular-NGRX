@@ -63,13 +63,13 @@
       "key": "login",
       "messages": {
         "email-required": {
-          "required" : "Email is required."
+          "required": "Email is required."
         },
-        "email-pattern":{
-          "pattern" :  "Please enter valid email address."
+        "email-pattern": {
+          "pattern": "Please enter valid email address."
         },
         "password-required": {
-          "required" : "Password is required."
+          "required": "Password is required."
         }
       }
     }

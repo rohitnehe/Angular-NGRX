@@ -26,7 +26,7 @@ export class LogInSuccess implements Action {
 // created action for login failure(for payload)
 export class LogInFailure implements Action {
   readonly type = AuthActionTypes.LOGIN_FAILURE;
-  constructor(public payload: any) { console.log(payload)}
+  constructor(public payload: any) {}
 }
 
 export class SignUp implements Action {
@@ -41,7 +41,7 @@ export class SignUpSuccess implements Action {
 
 export class SignUpFailure implements Action {
   readonly type = AuthActionTypes.SIGNUP_FAILURE;
-  constructor(public payload: any) { console.log(payload)}
+  constructor(public payload: any) {}
 }
 
 export class LogOut implements Action {

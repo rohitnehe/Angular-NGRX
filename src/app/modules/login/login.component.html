@@ -1,11 +1,6 @@
-<div *ngIf="errorMessage" class="mb-0 mt-3">
-  <div class="alert alert-{{type}}" role="alert" *ngIf="errorMessage">{{ errorMessage }}
-    <button type="button" class="close" (click)="errorMessage = null" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-</div>
-
+<!--server message-->
+<app-message [isAlert]="isAlert" [type]="type" [message]="errorMessage"></app-message>
+<!--server message-->
 
 <div class="form-wrapper">
   <div class="logo pb-0">
@@ -45,7 +40,6 @@
           *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
           class="error-msg">
           <span *ngIf="loginForm.controls['password'].errors.required">
-            <!-- {{validationMessage['password-required']}} -->
             <ul class="password-rules">
               <li *ngFor="let rule of validationMessage['password-required'] | keyvalue">{{rule.value}}</li>
             </ul>

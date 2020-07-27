@@ -29,10 +29,10 @@ export function reducer(state = initialState, action: All): State {
         errorMessage: null
       };
     }
-    
+
     case AuthActionTypes.LOGIN_FAILURE: {
       return {
-        
+
         ...state,
         errorMessage: action.payload.error.error
       };

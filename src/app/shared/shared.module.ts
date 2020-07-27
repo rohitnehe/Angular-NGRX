@@ -8,10 +8,13 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService as AuthGuard } from './services/auth.guard.service';
 import { PageNotFoundComponent } from '../shared/components/page-not-found/page-not-found.component';
+import { MessageComponent } from './components/message/message.component';
+
 
 @NgModule({
   declarations: [
     PageNotFoundComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { PageNotFoundComponent } from '../shared/components/page-not-found/page-
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MessageComponent
   ],
   providers: [
     AuthService,

@@ -13,17 +13,17 @@ const routes: Routes = [
     path: '', component: BioDetailsComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'profile-picture', component: ProfilePictureComponent
+    path: 'profile-picture', component: ProfilePictureComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'address', component: AddressComponent
+    path: 'address', component: AddressComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'security', component: SecurityComponent
+    path: 'security', component: SecurityComponent, canActivate: [AuthGuard]
   },
 
   {
-    path: 'profile-setup-complete', component: ProfileSetupCompleteComponent
+    path: 'profile-setup-complete', component: ProfileSetupCompleteComponent, canActivate: [AuthGuard]
   }
 ];
 
