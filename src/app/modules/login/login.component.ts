@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../models/user';
+import { User } from '../../models/user.model';
 import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { LogIn } from '../../store/actions/auth.actions';
-import { UserService } from '../../services/user.service';
+import { ValidationMessageService } from '../../services/validation.message.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private userService: UserService,
+    private validationMessageService: ValidationMessageService,
     private router: Router
   ) {
     this.getState = this.store.select(selectAuthState);
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   // get validation messages
   getValidationMessage() {
-    this.userService.loginValidationMessage().subscribe(response => {
+    this.validationMessageService.loginValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error); });
   }
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.message = state.errorMessage;
-      
+    
       if (this.user) {
         this.type = 'danger';
       }

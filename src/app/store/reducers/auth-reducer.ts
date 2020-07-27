@@ -1,5 +1,6 @@
-import { User } from '../../models/user';
+import { User } from '../../models/user.model';
 import { AuthActionTypes, All } from '../actions/auth.actions';
+
 
 export interface State {
   isAuthenticated: boolean;
@@ -15,9 +16,8 @@ export const initialState: State = {
 
 // reducers are to manage old state and new state according to action type
 export function reducer(state = initialState, action: All): State {
-  
+
   switch (action.type) {
-    
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,

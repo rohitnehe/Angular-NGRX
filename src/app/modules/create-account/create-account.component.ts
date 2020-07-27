@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { StaticDataService } from '../..//services/static.data.service';
 import { Store } from '@ngrx/store';
 import { SignUp, LogOut } from '../../store/actions/auth.actions';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { Observable } from 'rxjs';
+import { ValidationMessageService } from '../../services/validation.message.service';
+import { PageDataService } from '../../services/page.data.service';
+
 
 @Component({
   selector: 'app-create-account',
@@ -37,8 +38,8 @@ export class CreateAccountComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
-    private staticDataService: StaticDataService,
+    private validationMessageService: ValidationMessageService,
+    private pageDataService: PageDataService,
     private router: Router,
     private store: Store<AppState>
   ) {
@@ -77,7 +78,7 @@ export class CreateAccountComponent implements OnInit {
 
   // get validation messages
   getValidationMessage() {
-    this.userService.signupValidationMessage().subscribe(response => {
+    this.validationMessageService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error); });
   }
@@ -104,7 +105,6 @@ export class CreateAccountComponent implements OnInit {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.message = state.errorMessage;
-      console.log(this.message);
       if (this.user === null) {
         this.type = 'danger';
       }
@@ -131,7 +131,6 @@ export class CreateAccountComponent implements OnInit {
 
   // display server errors
   errorCallback(error: any) {
-    
     window.scroll(0, 0);
     if (error.error.status === 403 || error.status === 404) {
       this.router.navigate(['/page-not-found']);
@@ -143,13 +142,12 @@ export class CreateAccountComponent implements OnInit {
       }else{
         this.message = error.error ? error.error : (error.message ? error.message : this.message);
       }
-      
     }
   }
 
   // on click open & close function for terms of services modal window
   openTermsOfServicesModal() {
-    this.staticDataService.getServiceTerms().subscribe(response => {
+    this.pageDataService.getServiceTerms().subscribe(response => {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
@@ -162,7 +160,7 @@ export class CreateAccountComponent implements OnInit {
 
   // on click open & close function for privacy policy modal window
   openPrivacyPolicyModal() {
-    this.staticDataService.getPrivacyPolicy().subscribe(response => {
+    this.pageDataService.getPrivacyPolicy().subscribe(response => {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
