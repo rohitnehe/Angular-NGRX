@@ -16,16 +16,13 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
-  //user: User = new User();
   getState: Observable<any>;
   isAlert = false;
   type: string;
-  
   hidePassword: boolean;
   errorMessage: string | null;
   isAuthenticated: false;
-  user:any;
-  
+  user: any;
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.hidePassword = true;
     this.loginForm = this.fb.group(
       {
-        username: ['', [Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
+        username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
         password: ['', [Validators.required]],
       }
     );
@@ -83,8 +80,8 @@ export class LoginComponent implements OnInit {
     } else {
       this.isAlert = true;
       this.type = 'danger';
-      if(error.name == 'HttpErrorResponse'){
-        this.errorMessage = "Could not connect to server";
+      if (error.name === 'HttpErrorResponse'){
+        this.errorMessage = 'Could not connect to server';
       }else{
         this.errorMessage = error.error ? error.error : (error.message ? error.message : this.errorMessage);
       }
