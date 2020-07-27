@@ -102,7 +102,6 @@ export class CreateAccountComponent implements OnInit {
   // get store state
   getStoreState() {
     this.getState.subscribe((state) => {
-      console.log(state);
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.message = state.errorMessage;
