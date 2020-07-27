@@ -36,7 +36,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createLoginForm();
     this.getState.subscribe((state) => {
+      console.log(state);
       this.errorMessage = state.errorMessage;
+      if(!state.isAuthenticated){
+        this.type = 'danger';
+      }
     });
   }
   // create Login Form
@@ -57,6 +61,20 @@ export class LoginComponent implements OnInit {
       this.validationMessage = response[0].messages;
     }, (error) => { this.errorCallback(error); });
   }
+
+  // getStoreState() {
+  //   this.getState.subscribe((state) => {
+  //    // this.isAuthenticated = state.isAuthenticated;
+  //     this.user = state.user;
+  //     this.message = state.errorMessage;
+  //     if (this.user === null) {
+  //       this.type = 'danger';
+  //     }
+  //     // if (this.isAuthenticated) {
+  //     //   this.registerForm.reset();
+  //     // }
+  //   });
+  // }
 
   // display server errors
   errorCallback(error: any) {

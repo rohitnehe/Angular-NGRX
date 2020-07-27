@@ -18,8 +18,8 @@
         [routerLink]="['/login']">Sign In</a></p>
     <form [formGroup]="registerForm" novalidate (ngSubmit)="submit()">
       <div class="form-group has-float-label field-with-icon">
-        <input class="form-control" type="text" id="email" placeholder="Email" formControlName="email">
-        <label for="email">Email</label>
+        <input class="form-control" type="text" id="email" placeholder="Email Address" formControlName="email">
+        <label for="email">Email Address</label>
         <i *ngIf="registerForm.controls['email'].valid" class="icon-check text-success user-valid"></i>
         <div
           *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
@@ -46,9 +46,10 @@
           </span>
         </div>
         <div
-          *ngIf="registerForm.controls['password'].errors?.minlength || registerForm.controls['password'].errors?.pattern"
-          class="error-msg">
-          {{validationMessage['password-pattern']}}
+          *ngIf="registerForm.controls['password'].errors?.minlength || registerForm.controls['password'].errors?.pattern">
+          <ul class="password-rules">
+            <li *ngFor="let rule of validationMessage['password-pattern'] | keyvalue">{{rule.value}}</li>
+          </ul>
         </div>
       </div>
       <div class="form-group has-float-label field-with-icon">

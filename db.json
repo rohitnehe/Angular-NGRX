@@ -24,11 +24,6 @@
       "email": "rohan@mail.com",
       "password": "$2a$10$hHK5RJsJf72RZ.6WyA4T3ezpA2TKMc2fweICl/i3srB8TMsNOq9vW",
       "id": 5
-    },
-    {
-      "email": "test2@gmail.com",
-      "password": "$2a$10$jyvz4d.dkswH4gKhqcmoue54SioFcGU5IPVOtx2y83wbqL5XoqMAC",
-      "id": 6
     }
   ],
   "validationMessage": [
@@ -36,12 +31,16 @@
       "id": 1,
       "key": "create-account",
       "messages": {
-        "email-required": "Email is required.",
+        "email-required": "Email Address is required.",
         "email-pattern": "Please enter valid email address.",
         "password-required": "Password is required.",
-        "password-pattern": "Password should be 8 Characters Long, Containing one Capital and one Numeral Characters.",
+        "password-pattern": {
+          "minLength": "8 Characters Long",
+          "capital": "Contain one Capital",
+          "numerical": "Contain one Numeral"
+        },
         "confirm-password-required": "Confirm Password is required.",
-        "password-mismatch": "Password and Confirm Password do not match."
+        "password-mismatch": "Password and Confirm Password does not match."
       }
     },
     {
