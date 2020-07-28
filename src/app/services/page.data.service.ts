@@ -16,7 +16,7 @@ export class PageDataService {
 
   // validation terms of service
   getServiceTerms(): Observable<Page> {
-    const url = environment.serviceUrl + 'staticContent876786?key=terms-of-service';
+    const url = environment.serviceUrl + 'staticContent?key=terms-of-service';
     return this.http.get<Page>(url);
   }
 
