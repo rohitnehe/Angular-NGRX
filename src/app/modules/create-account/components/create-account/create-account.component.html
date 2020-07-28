@@ -12,16 +12,15 @@
         [routerLink]="['/login']">Sign In</a></p>
     <form [formGroup]="registerForm" novalidate (ngSubmit)="submit()">
       <div class="form-group has-float-label field-with-icon">
-        <input class="form-control"  type="text" id="email" appEmailChecker placeholder="Email Address" formControlName="email">
+        <input class="form-control" type="text" id="email" appEmailChecker placeholder="Email Address"
+          formControlName="email">
         <label for="email">Email Address</label>
         <i *ngIf="registerForm.controls['email'].valid" class="icon-check text-success user-valid"></i>
-        
         <div id="emailTaken" class="error-msg" *ngIf="validationMessage">
           <ul class="password-rules">
             <li *ngFor="let rule of validationMessage['email-exists'] | keyvalue">{{rule.value}}</li>
           </ul>
         </div>
-
         <div
           *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
           class="error-msg">
