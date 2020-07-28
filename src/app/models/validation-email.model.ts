@@ -1,4 +1,3 @@
-export interface ValidationEmailModel{
-    email?: string;
-  }
-  
+export interface ValidationEmailModel {
+  email?: string;
+}

@@ -6,16 +6,15 @@ import { ValidationEmailModel } from '../models/validation-email.model';
 import { map } from 'rxjs-compat/operator/map';
 
 @Injectable({
-    providedIn: 'root'
-  })
-  export class ValidationEmailService {
+  providedIn: 'root'
+})
+export class ValidationEmailService {
 
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-    getAllEmailIds(): Observable<ValidationEmailModel[]> {
-        const url = environment.serviceUrl + 'users';
-        return this.http.get<ValidationEmailModel[]>(url);
-        
-    }
-
+  getAllEmailIds(): Observable<ValidationEmailModel[]> {
+    const url = environment.serviceUrl + 'users';
+    return this.http.get<ValidationEmailModel[]>(url);
   }
+
+}

@@ -23,7 +23,7 @@ import { ErrorHandler } from './helpers/error-handler';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [AuthService,ErrorHandler],
+  providers: [AuthService, ErrorHandler],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
