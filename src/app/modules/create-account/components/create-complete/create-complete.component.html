@@ -2,6 +2,10 @@
 <app-message [isAlert]="error?.isAlert" [type]="error?.type" [message]="error?.message"></app-message>
 <!--server message-->
 
+<div class="form-wrapper">
+    <div class="logo">
+        <img src="../../../assets/img/logo.jpg" alt="logo">
+      </div>
 <div class="account-created text-center">
     <div class="success-icon mb-4"><i class="icon-check"></i></div>
     <h1 [innerHTML]="title" class="text-center mb-4 mt-4"></h1>
@@ -11,4 +15,7 @@
         <button (click)="logOut()" class="btn btn-outline btn-outline-primary">LOGOUT</button>
         <button [routerLink]="['/setup-profile']" class="btn btn-primary">SET UP PROFILE</button>
     </div>
+
 </div>
+
+
