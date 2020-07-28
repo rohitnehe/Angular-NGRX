@@ -44,6 +44,46 @@
       "email": "rohanprabhune1@benchmarkit.solutions",
       "password": "$2a$10$SlEqE3BndtZD/n4JxppzX.snnKZDYjYAtR7BYCnw3OU16/Lp1Qt6q",
       "id": 9
+    },
+    {
+      "email": "rohanprabhune100@benchmarkit.solutions",
+      "password": "$2a$10$izqP6peEKrUAhkwOvPnDZ.JVbu0k9V.TJL7iN5F7d8RKKPffVqxNe",
+      "id": 10
+    },
+    {
+      "email": "rohanprabhune200@benchmarkit.solutions",
+      "password": "$2a$10$drRYCtWcXoCdAyfucX.qk.K3qGF.vDhDpNrecDhu9gtnxZax.UTxe",
+      "id": 11
+    },
+    {
+      "email": "rohanprabhune300@benchmarkit.solutions",
+      "password": "$2a$10$1lvtruk8VVPgg.QaTTmefeujrXjRI1c7K0DUdWsYg.D2W7NVvHH0m",
+      "id": 12
+    },
+    {
+      "email": "rohanprabhune400@benchmarkit.solutions",
+      "password": "$2a$10$LuvH4IrLxnxmNQgSfYylzeSlyDxDlTU8pALDfhgXJj8Xxel/RnM7e",
+      "id": 13
+    },
+    {
+      "email": "rohanprabhune500@benchmarkit.solutions",
+      "password": "$2a$10$C/xjNu7.8Z4yFpUTLs7QLeZVxmi/87fAur6AnsCdeavFekQT2cL.K",
+      "id": 14
+    },
+    {
+      "email": "rohanprabhune600@benchmarkit.solutions",
+      "password": "$2a$10$KTiOpqXl9.LJpn5hI2.Wwu/rvqbuy6EUP4uBII4JRzsWVsqqet5Oi",
+      "id": 15
+    },
+    {
+      "email": "rohanprabhune333@benchmarkit.solutions",
+      "password": "$2a$10$Ud8UhKLRmgm6jW9LhOfY5Ozq8XWUdUN.4FuERnlGe.oISoVkHhsUW",
+      "id": 16
+    },
+    {
+      "email": "rohanprabhune888@benchmarkit.solutions",
+      "password": "$2a$10$v/Gkinb7REclk20tWQb0Tuds.tz9rH9C/4yqf0iXlYhSkDsegqpDy",
+      "id": 17
     }
   ],
   "validationMessage": [
@@ -71,7 +111,7 @@
         "password-mismatch": {
           "mismatch": "Password and Confirm Password does not match."
         },
-        "email-exists":{
+        "email-exists": {
           "emailIdError": "Email Address already taken."
         }
       }

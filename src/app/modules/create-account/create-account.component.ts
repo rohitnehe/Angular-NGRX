@@ -35,7 +35,6 @@ export class CreateAccountComponent implements OnInit {
   getState: Observable<any>;
   isAuthenticated: false;
 
-  
   constructor(
     private fb: FormBuilder,
     private validationMessageService: ValidationMessageService,
