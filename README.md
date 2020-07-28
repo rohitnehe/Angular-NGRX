@@ -1,32 +1,29 @@
-# Edufront
+Welcome to the ngrxangularstore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+The ngrx is intended to provide a simple code for user login and signup component with store and fake json server and json server auth as backend.
 
-## Development server
+The stack is made up of: angular 10.0.3
+node :  node v 10.16
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Pre-requisites
+<ul>
+ <li>node.js - <a href="https://nodejs.org/en/download/" rel="nofollow">Download page</a> .</li>
+ <li>npm - comes with node or download yarn - <a href="https://yarnpkg.com/lang/en/docs/install" rel="nofollow">Download page</a> .</li>
+ <li>json server auth - <a href="https://www.npmjs.com/package/json-server-auth" rel="nofollow">Json server and Json server auth</a> .</li>
+ <li>Angular (formerly Angular.js): Front-end web app framework; runs your JavaScript code in the user's browser, allowing your application UI to be dynamic</li>
+</ul>
 
-## Code scaffolding
+Installation
+git clone https://github.com/rohitnehe/Angular-NGRX.git
+cd  Angular-NGRX
+npm install
+ng serve
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To install Fake JSON Server
+npm install -D json-server json-server-auth
 
-## Build
+To Start Fake JSON Server
+json-server db.json -m ./node_modules/json-server-auth (in another terminal to run fake json server)
+if not run then use :
+npx json-server db.json -m ./node_modules/json-server-auth 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-## To Start Fake DB Server
-run this command in the root directory of the project 
-npx json-server-auth db.json
