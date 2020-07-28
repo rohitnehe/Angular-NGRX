@@ -23,7 +23,5 @@ To install Fake JSON Server
 npm install -D json-server json-server-auth
 
 To Start Fake JSON Server
-json-server db.json -m ./node_modules/json-server-auth (in another terminal to run fake json server)
-if not run then use :
-npx json-server db.json -m ./node_modules/json-server-auth 
+npx json-server-auth db.json  (in another terminal to run fake json server)
 
