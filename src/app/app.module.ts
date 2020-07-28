@@ -9,6 +9,8 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from '../app/services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import {HelperModule} from '../app/helper/helper.module';
+import { ErrorHandler } from './helper/error-handler';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +23,7 @@ import {HelperModule} from '../app/helper/helper.module';
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthEffects])
   ],
-  providers: [AuthService],
+  providers: [AuthService,ErrorHandler],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

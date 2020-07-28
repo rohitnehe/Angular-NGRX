@@ -34,6 +34,11 @@
       "email": "rohanprabhune12345@benchmarkit.solutions",
       "password": "$2a$10$zUaw2Soj2aUVs4N3VN2uY.GTqUvAEJQ8aj/8aJe/Wc24bwhe3IFbC",
       "id": 7
+    },
+    {
+      "email": "rohanprabhune12r345@benchmarkit.solutions",
+      "password": "$2a$10$p9buuyXDDwQtRtMymlExhO.n50fwqGiEjZ.sie1kHzB04iVmZmrhO",
+      "id": 8
     }
   ],
   "validationMessage": [
@@ -60,6 +65,9 @@
         },
         "password-mismatch": {
           "mismatch": "Password and Confirm Password does not match."
+        },
+        "email-exists":{
+          "emailIdError": "Email Address already taken."
         }
       }
     },

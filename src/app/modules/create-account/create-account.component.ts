@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Input,ChangeDetectionStrategy,OnChanges, HostListener, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SignUp, LogOut } from '../../store/actions/auth.actions';
@@ -8,10 +8,13 @@ import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../services/validation.message.service';
 import { PageDataService } from '../../services/page.data.service';
 import { ErrorHandler } from '../../helper/error-handler';
+import { EmailCheckerDirective }  from '../../directives/EmailChecker';
 
 @Component({
   selector: 'app-create-account',
-  templateUrl: './create-account.component.html'
+  templateUrl: './create-account.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  
 
 })
 export class CreateAccountComponent implements OnInit {
@@ -36,6 +39,8 @@ export class CreateAccountComponent implements OnInit {
   getState: Observable<any>;
   isAuthenticated: false;
 
+  
+  
   constructor(
     private fb: FormBuilder,
     private validationMessageService: ValidationMessageService,
@@ -47,10 +52,12 @@ export class CreateAccountComponent implements OnInit {
     this.getState = this.store.select(selectAuthState);
   }
 
+
   ngOnInit(): void {
     this.createForm();
     this.getStoreState();
   }
+
 
   // create account form
   createForm() {
@@ -81,6 +88,7 @@ export class CreateAccountComponent implements OnInit {
   getValidationMessage() {
     this.validationMessageService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
+      // console.log(this.validationMessage);
     }, (error) => { 
       this._errorHandler.errorCallback(error);
       //this.errorCallback(error);

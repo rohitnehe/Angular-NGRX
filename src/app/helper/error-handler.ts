@@ -1,4 +1,6 @@
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class ErrorHandler{
   // display server errors
   public errorCallback<Object>(error: any) {
