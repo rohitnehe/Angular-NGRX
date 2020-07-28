@@ -26,4 +26,10 @@ export class PageDataService {
     return this.http.get<Page>(url);
   }
 
+  // account created message
+  getAccountCreationMessage(): Observable<Page> {
+    const url = environment.serviceUrl + 'staticContent?key=account-created';
+    return this.http.get<Page>(url);
+  }
+
 }
