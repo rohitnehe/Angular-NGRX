@@ -8,8 +8,8 @@ import { reducers } from './store/app.states';
 import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from '../app/services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
-import {HelperModule} from '../app/helper/helper.module';
-import { ErrorHandler } from './helper/error-handler';
+import {HelperModule} from './helpers/helper.module';
+import { ErrorHandler } from './helpers/error-handler';
 
 @NgModule({
   declarations: [

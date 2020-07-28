@@ -22,7 +22,6 @@ import { MessageComponent } from './components/message/message.component';
     MessageComponent
   ],
   providers: [
-   // AuthService,
   ],
 })
 export class SharedModule { }
