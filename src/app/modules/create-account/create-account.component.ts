@@ -7,7 +7,7 @@ import { AppState, selectAuthState } from '../../store/app.states';
 import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../services/validation.message.service';
 import { PageDataService } from '../../services/page.data.service';
-import { ErrorHandler } from '../../helper/error-handler';
+import { ErrorHandler } from '../../helpers/error-handler';
 import { EmailCheckerDirective }  from '../../directives/EmailChecker';
 
 @Component({
