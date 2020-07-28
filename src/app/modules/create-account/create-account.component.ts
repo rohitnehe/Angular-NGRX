@@ -141,8 +141,8 @@ export class CreateAccountComponent implements OnInit {
     } else {
       this.isAlert = true;
       this.type = 'danger';
-      if(error.name == 'HttpErrorResponse'){
-        this.message = "Could not connect to server";
+      if (error.name === 'HttpErrorResponse'){
+        this.message = 'Could not connect to server';
       }else{
         this.message = error.error ? error.error : (error.message ? error.message : this.message);
       }
