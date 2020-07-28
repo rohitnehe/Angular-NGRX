@@ -60,10 +60,8 @@ export class LoginComponent implements OnInit {
 
   getStoreState() {
     this.getState.subscribe((state) => {
-
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
-      this.error.errorMessage = state.errorMessage;
       if (!this.isAuthenticated) {
         this.error.type = 'danger';
       }
@@ -93,7 +91,7 @@ export class LoginComponent implements OnInit {
       try {
         this.error = {};
         this.store.dispatch(new LogIn(payload));
-      } catch (error) { this.error = this.errorHandler.errorCallback(error); }
+      } catch (error) { this.error = this.errorHandler.errorCallback(error); console.log(this.error)}
     }
     else {
       this.markControlsAsTouched(this.loginForm);
