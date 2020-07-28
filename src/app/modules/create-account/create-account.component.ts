@@ -13,9 +13,7 @@ import { EmailCheckerDirective }  from '../../directives/EmailChecker';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  
-
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateAccountComponent implements OnInit {
 
@@ -37,7 +35,6 @@ export class CreateAccountComponent implements OnInit {
   getState: Observable<any>;
   isAuthenticated: false;
 
-  
   
   constructor(
     private fb: FormBuilder,
