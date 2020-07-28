@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { SignUp, LogOut } from '../../store/actions/auth.actions';
 import { AppState, selectAuthState } from '../../store/app.states';
@@ -8,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../services/validation.message.service';
 import { PageDataService } from '../../services/page.data.service';
 import { ErrorHandler } from '../../helper/error-handler';
+
 
 @Component({
   selector: 'app-create-account',
@@ -24,9 +24,7 @@ export class CreateAccountComponent implements OnInit {
   privacyPolicy: string;
 
   // alert message
-  message: string | null;
-  isAlert = false;
-  type: string;
+  error: any = {};
 
   registerForm: FormGroup;
   validationMessage: object;
@@ -40,9 +38,8 @@ export class CreateAccountComponent implements OnInit {
     private fb: FormBuilder,
     private validationMessageService: ValidationMessageService,
     private pageDataService: PageDataService,
-    private router: Router,
     private store: Store<AppState>,
-    private _errorHandler: ErrorHandler
+    private errorHandler: ErrorHandler,
   ) {
     this.getState = this.store.select(selectAuthState);
   }
@@ -50,6 +47,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getStoreState();
+    this.error= {};
   }
 
   // create account form
@@ -81,9 +79,8 @@ export class CreateAccountComponent implements OnInit {
   getValidationMessage() {
     this.validationMessageService.signupValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
-    }, (error) => { 
-      this._errorHandler.errorCallback(error);
-      //this.errorCallback(error);
+    }, (error) => {
+      this.error = this.errorHandler.errorCallback(error);
      });
   }
 
@@ -95,8 +92,9 @@ export class CreateAccountComponent implements OnInit {
         password: this.registerForm.value.password
       };
       try {
+        this.error= {};
         this.store.dispatch(new SignUp(payload));
-      } catch (error) { console.log(error); }
+      } catch (error) { this.error = this.errorHandler.errorCallback(error) }
     } else {
       this.markControlsAsTouched(this.registerForm);
     }
@@ -108,9 +106,9 @@ export class CreateAccountComponent implements OnInit {
     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
-      this.message = state.errorMessage;
+      this.error.message = state.errorMessage;
       if (this.user === null) {
-        this.type = 'danger';
+        this.error.type = 'danger';
       }
       if (this.isAuthenticated) {
         this.registerForm.reset();
@@ -133,29 +131,13 @@ export class CreateAccountComponent implements OnInit {
     this.store.dispatch(new LogOut());
   }
 
-  // display server errors
-  errorCallback(error: any) {
-    window.scroll(0, 0);
-    if (error.error.status === 403 || error.status === 404) {
-      this.router.navigate(['/page-not-found']);
-    } else {
-      this.isAlert = true;
-      this.type = 'danger';
-      if (error.name === 'HttpErrorResponse'){
-        this.message = 'Could not connect to server';
-      }else{
-        this.message = error.error ? error.error : (error.message ? error.message : this.message);
-      }
-    }
-  }
-
   // on click open & close function for terms of services modal window
   openTermsOfServicesModal() {
     this.pageDataService.getServiceTerms().subscribe(response => {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
-    }, (error) => { this.errorCallback(error); });
+    }, (error) => { this.error = this.errorHandler.errorCallback(error) });
   }
 
   closeTermsOfServicesModal() {
@@ -168,7 +150,7 @@ export class CreateAccountComponent implements OnInit {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
-    }, (error) => { this.errorCallback(error); });
+    }, (error) => { this.error = this.errorHandler.errorCallback(error) });
   }
 
   closePrivacyPolicyModal() {
