@@ -1,10 +1,10 @@
-import { Input, Directive, HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { Input, Directive, HostListener, ElementRef, Renderer2, OnChanges } from '@angular/core';
 import { ValidationEmailService } from '../services/validation.email.service';
 
 @Directive({
   selector: '[appEmailChecker]'
 })
-export class EmailCheckerDirective {
+export class EmailCheckerDirective implements OnChanges {
 
   userEmailIds;
   @Input() public input: string;
