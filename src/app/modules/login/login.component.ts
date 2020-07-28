@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from '../../models/user';
 import { Store } from '@ngrx/store';
 import { AppState, selectAuthState } from '../../store/app.states';
 import { LogIn } from '../../store/actions/auth.actions';
-import { UserService } from '../../services/user.service';
+import { ValidationMessageService } from '../../services/validation.message.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { ErrorHandler } from '../../helpers/error-handler';
+
 
 @Component({
   selector: 'app-login',
@@ -16,22 +17,19 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   validationMessage: object;
-  //user: User = new User();
   getState: Observable<any>;
-  isAlert = false;
-  type: string;
-  
+  // alert message
+  error: any = {};
   hidePassword: boolean;
-  errorMessage: string | null;
   isAuthenticated: false;
-  user:any;
-  
+  user: any;
 
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private userService: UserService,
-    private router: Router
+    private validationMessageService: ValidationMessageService,
+    private router: Router,
+    private errorHandler: ErrorHandler,
   ) {
     this.getState = this.store.select(selectAuthState);
   }
@@ -39,13 +37,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createLoginForm();
     this.getStoreState();
+    this.error = {};
   }
   // create Login Form
   createLoginForm() {
     this.hidePassword = true;
     this.loginForm = this.fb.group(
       {
-        username: ['', [Validators.required,Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
+        username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{1,}[.]{1}[a-zA-Z]{1,}')]],
         password: ['', [Validators.required]],
       }
     );
@@ -54,41 +53,24 @@ export class LoginComponent implements OnInit {
 
   // get validation messages
   getValidationMessage() {
-    this.userService.loginValidationMessage().subscribe(response => {
+    this.validationMessageService.loginValidationMessage().subscribe(response => {
       this.validationMessage = response[0].messages;
-    }, (error) => { this.errorCallback(error); });
+    }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
   getStoreState() {
     this.getState.subscribe((state) => {
-    
+
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
-      this.errorMessage = state.errorMessage;
-      
+      this.error.errorMessage = state.errorMessage;
       if (!this.isAuthenticated) {
-        this.type = 'danger';
+        this.error.type = 'danger';
       }
       if (this.isAuthenticated) {
         this.loginForm.reset();
       }
     });
-  }
-
-  // display server errors
-  errorCallback(error: any) {
-    window.scroll(0, 0);
-    if (error.error.status === 403 || error.status === 404) {
-      this.router.navigate(['/page-not-found']);
-    } else {
-      this.isAlert = true;
-      this.type = 'danger';
-      if(error.name == 'HttpErrorResponse'){
-        this.errorMessage = "Could not connect to server";
-      }else{
-        this.errorMessage = error.error ? error.error : (error.message ? error.message : this.errorMessage);
-      }
-    }
   }
 
   // Mark controls of form as touched.
@@ -108,7 +90,10 @@ export class LoginComponent implements OnInit {
         email: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
-      this.store.dispatch(new LogIn(payload));
+      try {
+        this.error = {};
+        this.store.dispatch(new LogIn(payload));
+      } catch (error) { this.error = this.errorHandler.errorCallback(error); }
     }
     else {
       this.markControlsAsTouched(this.loginForm);

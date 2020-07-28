@@ -6,7 +6,7 @@ import { AddressComponent } from './components/address/address.component';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { BioDetailsComponent } from './components/bio-details/bio-details.component';
 import { ProfileSetupCompleteComponent } from './components/profile-setup-complete/profile-setup-complete.component';
-import { AuthGuardService as AuthGuard} from '../../helper/auth/auth.guard';
+import { AuthGuardService as AuthGuard} from '../../helpers/auth/auth.guard';
 
 
 const routes: Routes = [

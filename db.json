@@ -29,6 +29,21 @@
       "email": "rohanprabhune@benchmarkit.solutions",
       "password": "$2a$10$KKdjPv8k1BAAEfB4aT746.oUIIRt8X04uiKjKR6TnWldZ78F9o2VS",
       "id": 6
+    },
+    {
+      "email": "rohanprabhune12345@benchmarkit.solutions",
+      "password": "$2a$10$zUaw2Soj2aUVs4N3VN2uY.GTqUvAEJQ8aj/8aJe/Wc24bwhe3IFbC",
+      "id": 7
+    },
+    {
+      "email": "rohanprabhune2000@benchmarkit.solutions",
+      "password": "$2a$10$uY7l7JKdqO5myHX9KUtSvOwB1GVigqYC5Sa9yuMi3RvlBnWdklblO",
+      "id": 8
+    },
+    {
+      "email": "rohanprabhune1@benchmarkit.solutions",
+      "password": "$2a$10$SlEqE3BndtZD/n4JxppzX.snnKZDYjYAtR7BYCnw3OU16/Lp1Qt6q",
+      "id": 9
     }
   ],
   "validationMessage": [
@@ -55,6 +70,9 @@
         },
         "password-mismatch": {
           "mismatch": "Password and Confirm Password does not match."
+        },
+        "email-exists":{
+          "emailIdError": "Email Address already taken."
         }
       }
     },

@@ -330,4 +330,14 @@ ul {
   }
 }
 
+.email-exists +label+i{
+  display: none;
+}
+.email-exists + label+i+#emailTaken{
+  display: block ! important ;
+}
+#emailTaken{
+  display: none;
+}
+
 
