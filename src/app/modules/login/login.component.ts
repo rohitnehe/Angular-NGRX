@@ -6,7 +6,7 @@ import { LogIn } from '../../store/actions/auth.actions';
 import { ValidationMessageService } from '../../services/validation.message.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { ErrorHandler } from '../../helper/error-handler';
+import { ErrorHandler } from '../../helpers/error-handler';
 
 
 @Component({
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       try {
         this.error = {};
         this.store.dispatch(new LogIn(payload));
-      } catch (error) { this.error = this.errorHandler.errorCallback(error) }
+      } catch (error) { this.error = this.errorHandler.errorCallback(error); }
     }
     else {
       this.markControlsAsTouched(this.loginForm);

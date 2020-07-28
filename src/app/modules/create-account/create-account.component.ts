@@ -6,7 +6,7 @@ import { AppState, selectAuthState } from '../../store/app.states';
 import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../services/validation.message.service';
 import { PageDataService } from '../../services/page.data.service';
-import { ErrorHandler } from '../../helper/error-handler';
+import { ErrorHandler } from '../../helpers/error-handler';
 
 
 @Component({
@@ -47,7 +47,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getStoreState();
-    this.error= {};
+    this.error = {};
   }
 
   // create account form
@@ -92,9 +92,9 @@ export class CreateAccountComponent implements OnInit {
         password: this.registerForm.value.password
       };
       try {
-        this.error= {};
+        this.error = {};
         this.store.dispatch(new SignUp(payload));
-      } catch (error) { this.error = this.errorHandler.errorCallback(error) }
+      } catch (error) { this.error = this.errorHandler.errorCallback(error); }
     } else {
       this.markControlsAsTouched(this.registerForm);
     }
@@ -137,7 +137,7 @@ export class CreateAccountComponent implements OnInit {
       this.termsOfServicesTitle = response[0].title;
       this.termsOfServices = response[0].content;
       this.termsOfServicesModal = true;
-    }, (error) => { this.error = this.errorHandler.errorCallback(error) });
+    }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
   closeTermsOfServicesModal() {
@@ -150,7 +150,7 @@ export class CreateAccountComponent implements OnInit {
       this.privacyPolicyTitle = response[0].title;
       this.privacyPolicy = response[0].content;
       this.privacyPolicyModal = true;
-    }, (error) => { this.error = this.errorHandler.errorCallback(error) });
+    }, (error) => { this.error = this.errorHandler.errorCallback(error); });
   }
 
   closePrivacyPolicyModal() {

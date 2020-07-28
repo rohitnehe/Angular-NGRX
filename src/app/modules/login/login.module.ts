@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { SharedModule } from '../../shared/shared.module';
-import { HelperModule } from '../../helper/helper.module';
+import { HelperModule } from '../../helpers/helper.module';
 
 
 @NgModule({

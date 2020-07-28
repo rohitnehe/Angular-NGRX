@@ -8,7 +8,7 @@ import { reducers } from './store/app.states';
 import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from '../app/services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
-import {HelperModule} from '../app/helper/helper.module';
+import {HelperModule} from '../app/helpers/helper.module';
 @NgModule({
   declarations: [
     AppComponent
