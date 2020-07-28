@@ -2,13 +2,13 @@ import { Component, OnInit, Input,ChangeDetectionStrategy,OnChanges, HostListene
 import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignUp, LogOut } from '../../store/actions/auth.actions';
-import { AppState, selectAuthState } from '../../store/app.states';
+import { SignUp, LogOut } from '../../../../store/actions/auth.actions';
+import { AppState, selectAuthState } from '../../../../store/app.states';
 import { Observable } from 'rxjs';
-import { ValidationMessageService } from '../../services/validation.message.service';
-import { PageDataService } from '../../services/page.data.service';
-import { ErrorHandler } from '../../helpers/error-handler';
-import { EmailCheckerDirective }  from '../../directives/EmailChecker';
+import { ValidationMessageService } from '../../../../services/validation.message.service';
+import { PageDataService } from '../../../../services/page.data.service';
+import { ErrorHandler } from '../../../../helpers/error-handler';
+import { EmailCheckerDirective }  from '../../../../directives/EmailChecker';
 
 @Component({
   selector: 'app-create-account',
