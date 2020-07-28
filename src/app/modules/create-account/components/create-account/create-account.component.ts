@@ -1,14 +1,13 @@
-import { Component, OnInit, Input,ChangeDetectionStrategy,OnChanges, HostListener, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormControlName } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Router} from '@angular/router';
 import { Store } from '@ngrx/store';
-import { SignUp, LogOut } from '../../../../store/actions/auth.actions';
+import { SignUp} from '../../../../store/actions/auth.actions';
 import { AppState, selectAuthState } from '../../../../store/app.states';
 import { Observable } from 'rxjs';
 import { ValidationMessageService } from '../../../../services/validation.message.service';
 import { PageDataService } from '../../../../services/page.data.service';
 import { ErrorHandler } from '../../../../helpers/error-handler';
-import { EmailCheckerDirective }  from '../../../../directives/EmailChecker';
 
 @Component({
   selector: 'app-create-account',
@@ -41,17 +40,16 @@ export class CreateAccountComponent implements OnInit {
     private pageDataService: PageDataService,
     private store: Store<AppState>,
     private errorHandler: ErrorHandler,
+    private router: Router,
   ) {
     this.getState = this.store.select(selectAuthState);
   }
-
 
   ngOnInit(): void {
     this.createForm();
     this.getStoreState();
     this.error = {};
   }
-
 
   // create account form
   createForm() {
@@ -115,6 +113,7 @@ export class CreateAccountComponent implements OnInit {
       }
       if (this.isAuthenticated) {
         this.registerForm.reset();
+        this.router.navigate(['/create-account/create-complete']);
       }
     });
   }
@@ -127,11 +126,6 @@ export class CreateAccountComponent implements OnInit {
       }
     }
     window.scroll(0, 0);
-  }
-
-  // logout user
-  logOut(): void {
-    this.store.dispatch(new LogOut());
   }
 
   // on click open & close function for terms of services modal window

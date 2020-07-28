@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { LogOut } from '../../../../store/actions/auth.actions';
+import { AppState} from '../../../../store/app.states';
 
 @Component({
   selector: 'app-create-complete',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCompleteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+  ) {}
 
   ngOnInit(): void {
+  }
+
+   // logout user
+   logOut(): void {
+    this.store.dispatch(new LogOut());
   }
 
 }
