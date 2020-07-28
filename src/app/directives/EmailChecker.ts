@@ -6,21 +6,23 @@ import { ValidationEmailService } from '../services/validation.email.service';
 })
 export class EmailCheckerDirective {
 
-
+  userEmailIds;
   @Input() public input: String;
 
   constructor(private renderer: Renderer2,private el: ElementRef,private emailService: ValidationEmailService) {
 
-
+    this.emailService.getAllEmailIds().subscribe(data=> {
+        this.userEmailIds = data;
+    });
   }
 
   @HostListener("keyup") ngOnChanges() {
    
    
  
-   this.emailService.getAllEmailIds().subscribe(data=> {
+  
 
-    const status = (data.some(x=>x.email==this.el.nativeElement.value));
+        const status = (this.userEmailIds.some(x=>x.email==this.el.nativeElement.value));
   
 
 
@@ -38,8 +40,7 @@ export class EmailCheckerDirective {
 
         }
 
-    
-    });
+
     
   }
 }
