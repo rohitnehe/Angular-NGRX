@@ -25,7 +25,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/create-account',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
 
